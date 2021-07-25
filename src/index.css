@@ -1,0 +1,334 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/*  */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap");
+body {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  background-color: #b3b3b3;
+  font-family: "Rubik", sans-serif;
+}
+
+.form-con {
+  width: 390px;
+  height: 630px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 6px;
+}
+
+.signUp {
+  text-align: left;
+  font-family: "Rubik", sans-serif;
+}
+.login {
+  text-align: left;
+  font-family: "Rubik", sans-serif;
+}
+.formcon2 {
+  height: 350px;
+}
+.times {
+  position: relative;
+  top: 39px;
+  left: 150px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.container2 {
+  border: 1px solid #979797;
+  border-radius: 3px;
+  width: 70%;
+  height: 90px;
+  padding: 0 20px;
+  display: flex;
+  background-color: #eff0f6;
+  margin-bottom: 10px;
+}
+.container {
+  border: 1px solid #979797;
+  border-radius: 3px;
+  width: 70%;
+  height: 50px;
+  padding: 0 20px;
+  display: flex;
+  background-color: #eff0f6;
+  margin-bottom: 10px;
+}
+.input-con {
+  width: 100%;
+}
+.label {
+  text-align: left;
+  font-size: 11px;
+  color: #ce1414;
+  margin-top: 10px;
+}
+
+.input {
+  border: none;
+  width: 100%;
+  outline: none;
+  background-color: #eff0f6;
+}
+.input::placeholder {
+  margin-top: 20px;
+}
+i {
+  margin-top: 15px;
+  margin-right: 10px;
+  color: #979797;
+  font-size: 16px;
+}
+.submit-con {
+  margin-top: 30px;
+  border: none;
+  display: inline;
+  background: #006fd7;
+}
+.submit {
+  background: #006fd7;
+  color: white;
+  border: none;
+  width: 100%;
+  height: 100%;
+  font-family: "Rubik", sans-serif;
+  cursor: pointer;
+}
+.below-submit {
+  background-color: white;
+  border: none;
+  width: 80%;
+}
+p {
+  font-size: 10px;
+  text-align: left;
+}
+a {
+  color: #5a1cb9;
+}
+
+/* user profile page */
+.user-prof-image {
+  display: flex;
+}
+.user-profile {
+  display: flex;
+  margin: 120px;
+  margin-top: 50px;
+  margin-left: 270px;
+}
+.user-image {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.change-image {
+  margin-top: 130px;
+  margin-left: -50px;
+  width: 120px;
+  height: 25px;
+  visibility: hidden;
+}
+.user-image:hover + .change-image {
+  visibility: visible;
+}
+.user-details {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.user-mini-details {
+  display: flex;
+}
+.user-name {
+  font-size: 35px;
+  font-weight: 400;
+  color: rgb(15, 15, 15);
+}
+.message-button {
+  width: 120px;
+  height: 25px;
+  margin-top: 13px;
+  margin-left: 15px;
+  cursor: pointer;
+  color: rgb(15, 15, 15);
+}
+.fa-ellipsis-h {
+  font-size: 19px;
+  margin-left: 15px;
+  margin-top: 13px;
+  color: rgb(15, 15, 15);
+}
+.details-two {
+  margin-top: 16px;
+  justify-content: space-between;
+}
+.post-count {
+  font-size: 18px;
+  margin-left: 2px;
+  color: rgb(71, 71, 71);
+}
+.repo {
+  font-size: 17px;
+  font-weight: 400;
+}
+.likes-count {
+  font-size: 17px;
+  color: rgb(71, 71, 71);
+}
+.likes {
+  font-size: 17px;
+  font-weight: 400;
+}
+.connect {
+  font-size: 17px;
+  font-weight: 400;
+}
+.my-connect {
+  font-size: 17px;
+  color: rgb(71, 71, 71);
+}
+.user-gender {
+  font-size: 20px;
+  font-weight: 400;
+  color: rgb(15, 15, 15);
+}
+.job-title {
+  font-size: 20px;
+  font-weight: 400;
+  color: rgb(15, 15, 15);
+}
+.github-link {
+  font-size: 17px;
+  font-weight: 400;
+  color: rgb(71, 71, 71);
+}
+.git-link {
+  text-decoration: none;
+  font-size: 15px;
+}
+.user-header-ruler {
+  width: 70%;
+  margin-top: -90px;
+  margin-left: 180px;
+  color: rgb(238, 235, 235);
+  height: 1px;
+}
+.recent-posts {
+  font-size: 22px;
+  font-weight: 400;
+  color: rgb(15, 15, 15);
+  margin-left: 270px;
+}
+.repo-images {
+  display: flex;
+  margin-left: 210px;
+  margin-top: 15px;
+}
+.repo-image {
+  width: 250px;
+  height: 250px;
+  border-radius: 5%;
+}
+.repo1 {
+  margin-left: 40px;
+}
+.repo-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(54, 54, 54);
+  margin-left: 10px;
+}
+.repo-description {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(3, 0, 0);
+  margin-left: 10px;
+}
+.view-more {
+  text-align: right;
+  margin-left: 1000px;
+  background: #006fd7;
+  color: whitesmoke;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+/* Change Password */
+.person {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-top: 20px;
+}
+.user-prof {
+  display: flex;
+  margin-left: 50px;
+}
+.name {
+  font-size: 20px;
+  color: rgb(54, 54, 54);
+  font-weight: 400;
+  margin-top: 25px;
+  margin-left: 25px;
+}
+.main-edit {
+  display: flex;
+  margin-top: 15px;
+}
+.pass {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.edit-page {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.password {
+  border: none;
+  height: 40px;
+  /* padding: 15px; */
+  width: 30%;
+  outline: none;
+  background-color: #eff0f6;
+  /* margin-left: 40px; */
+  margin-top: -3px;
+}
+.new {
+  margin-left: 30px;
+}
+.button {
+  margin-left: 155px;
+}
+.change-password {
+  margin-top: 15px;
+  width: 15%;
+  height: 35px;
+  padding: 5px;
+  cursor: pointer;
+}
+.button {
+  display: grid;
+}
+.forgot-password {
+  margin-top: 10px;
+}
