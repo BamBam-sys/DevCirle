@@ -1,4 +1,8 @@
-import { SIGN_UP_FAILURE, SIGN_UP_START, SIGN_UP_SUCCESS } from '../types/signUpType';
+import {
+  SIGN_UP_FAILURE,
+  SIGN_UP_START,
+  SIGN_UP_SUCCESS,
+} from "../types/signUpType";
 
 const initialState = {
   data: {},

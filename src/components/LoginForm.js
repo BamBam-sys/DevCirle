@@ -6,21 +6,21 @@ import { loginAsync } from "../redux/action/loginAction";
 const Login = () => {
   const dispatch = useDispatch();
 
-  const [userCred, setUserCred] = useState({
+  const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
 
   function handleChange(e) {
-    setUserCred({ ...userCred, [e.target.name]: e.target.value });
+    setLoginData({ ...loginData, [e.target.name]: e.target.value });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(loginAsync(userCred));
+    dispatch(loginAsync(loginData));
   }
 
-  useSelector((state) => console.log(state.login));
+  // useSelector((state) => console.log(state.login));
 
   return (
     <div>
@@ -44,7 +44,7 @@ const Login = () => {
                 name="email"
                 className="input"
                 placeholder="devCircle@gmail.com "
-                value={userCred.email}
+                value={loginData.email}
                 onChange={handleChange}
               />
             </div>
@@ -67,7 +67,7 @@ const Login = () => {
                 name="password"
                 className="input"
                 placeholder="••••••••••••"
-                value={userCred.password}
+                value={loginData.password}
                 onChange={handleChange}
               />
             </div>
