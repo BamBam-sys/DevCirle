@@ -7,7 +7,7 @@ import SignUpForm from "./components/SignUpForm";
 import Login from "./components/LoginForm";
 import UserProfilePage from "./components/UserProfilePage";
 import ChangePassword from "./components/ChangePassword";
-import UserSearchPage from "./components/UserSearchPage";
+import SearchPage from "./components/SearchPage";
 
 function App() {
   return (
@@ -25,8 +25,8 @@ function App() {
         <Route exact path="/changepassword">
           <ChangePassword />
         </Route>
-        <Route exact path="/usersearchpage">
-          <UserSearchPage />
+        <Route exact path="/searchpage">
+          <SearchPage />
         </Route>
       </Router>
     </div>

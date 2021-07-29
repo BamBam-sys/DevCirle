@@ -3,7 +3,7 @@ import SearchBar from "./SearchBar";
 import UserCard from "./UserCard";
 import mockdata from "../MOCK_DATA.json";
 
-function UserSearchPage() {
+function SearchPage() {
   const [cardInfo, setCardInfo] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -40,4 +40,4 @@ function UserSearchPage() {
   );
 }
 
-export default UserSearchPage;
+export default SearchPage;
