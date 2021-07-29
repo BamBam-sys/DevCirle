@@ -53,7 +53,7 @@ const SignUpComponent = () => {
     //call signup action
     dispatch(signupAsync(signupData));
   };
-  // useSelector((state) => console.log(state.signup));
+  useSelector((state) => console.log(state.signup));
   // console.log(error);
 
   return (
