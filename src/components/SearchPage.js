@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SearchBar from "./SearchBar";
 import UserCard from "./UserCard";
 import mockdata from "../MOCK_DATA.json";
+import style from "../styles/searchpage.module.css";
 
 function SearchPage() {
   const [cardInfo, setCardInfo] = useState([]);
@@ -14,9 +15,10 @@ function SearchPage() {
   };
 
   return (
-    <>
+    // className={style.section}
+    <section className={style.section}>
       <SearchBar searchVal={searchVal} />
-      <div className="user-card">
+      <div className={style.userCard}>
         {cardInfo
           .filter((val) => {
             if (search === "") {
@@ -36,7 +38,7 @@ function SearchPage() {
             />
           ))}
       </div>
-    </>
+    </section>
   );
 }
 

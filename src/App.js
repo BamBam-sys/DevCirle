@@ -8,6 +8,7 @@ import Login from "./components/LoginForm";
 import UserProfilePage from "./components/UserProfilePage";
 import ChangePassword from "./components/ChangePassword";
 import SearchPage from "./components/SearchPage";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
         </Route>
         <Route exact path="/searchpage">
           <SearchPage />
+        </Route>
+        <Route exact path="/profilepage">
+          <ProfilePage />
         </Route>
       </Router>
     </div>

@@ -1,11 +1,13 @@
 import React from "react";
+import style from "../styles/usercard.module.css";
 
-function UserCard({ name, email }) {
+function UserCard({ id, name, email }) {
   return (
+    // className={style.userCard}
     <div>
-      <div className="card">
-        <div className="card-image"></div>
-        <div className="card-text">
+      <div className={style.card}>
+        <div className={style.cardImage}></div>
+        <div className={style.cardText}>
           <h2>{name}</h2>
           <h3>{email}</h3>
         </div>

@@ -12,8 +12,8 @@ const SearchBar = ({ searchVal }) => {
   };
 
   const BarStyling = {
-    // border: "2px solid rgba(252, 252, 252, 0.4)",
-    // backgroundColor: "rgba(252, 252, 252, 0.2)",
+    border: "4px solid red",
+    backgroundColor: "rgba(252, 252, 252, 0.2)",
     width: "20rem",
     padding: "0.5rem",
     marginTop: "35px",

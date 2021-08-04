@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "@fortawesome/fontawesome-free/css/all.css";
 import { loginAsync } from "../redux/action/loginAction";
+import style from "../styles/login.module.css";
 
 const Login = () => {
   const dispatch = useDispatch();
 
-  const [loginData, setLoginData] = useState({
-    email: "",
-    password: "",
-  });
+  const [loginData, setLoginData] = useState({});
 
-  function handleChange(e) {
+  function handleFormChanges(e) {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   }
 
@@ -20,76 +17,44 @@ const Login = () => {
     dispatch(loginAsync(loginData));
   }
 
-  // useSelector((state) => console.log(state.login));
+  useSelector((state) => console.log(state.login));
 
   return (
-    <div>
-      <form className="form-con formcon2" onSubmit={handleSubmit}>
-        <span className="times">&times;</span>
-        <h2 className="login">Login</h2>
+    <section className={style.section}>
+      <div className={style.form}>
+        <form onSubmit={handleSubmit}>
+          <h1 className={style.formTitle}>Log In</h1>
 
-        <div className="container2">
-          <div>
-            <i className="far fa-envelope fa-1x"></i>
+          <div className={style.formGroup}>
+            <input
+              className={style.formInput}
+              type="email"
+              name="Email"
+              placeholder="Email"
+              value={loginData.email}
+              onChange={handleFormChanges}
+            />
           </div>
-          <div className="input-con">
-            <div className="label">
-              <label htmlFor="email" className="email">
-                Email
-              </label>
-            </div>
-            <div className="input">
-              <input
-                type="text"
-                name="email"
-                className="input"
-                placeholder="devCircle@gmail.com "
-                value={loginData.email}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-        </div>
 
-        <div className="container2">
-          <div>
-            <i className="fas fa-eye"></i>
+          <div className={style.formGroup}>
+            <input
+              className={style.formInput}
+              type="password"
+              placeholder="Password"
+              value={loginData.password}
+              onChange={handleFormChanges}
+            />
           </div>
-          <div className="input-con">
-            <div className="label">
-              <label htmlFor="password" className="password">
-                Password
-              </label>
-            </div>
-            <div className="input">
-              <input
-                type="password"
-                name="password"
-                className="input"
-                placeholder="••••••••••••"
-                value={loginData.password}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-        </div>
 
-        <div className="container2 submit-con">
-          <button
-            type="submit"
-            name=""
-            className="submit"
-            value="Create Account"
-          >
-            Submit{" "}
+          <button type="submit" className={style.formButton}>
+            Submit
           </button>
-        </div>
-
-        <div className="container below-submit">
-          <p>Already have an account? </p>
-        </div>
-      </form>
-    </div>
+          <h4>
+            Don't have an account? <a href="">Sign Up</a>
+          </h4>
+        </form>
+      </div>
+    </section>
   );
 };
 

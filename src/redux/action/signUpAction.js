@@ -25,9 +25,8 @@ const signupFailure = (err) => ({
 export const signupAsync = (data) => async (dispatch) => {
   try {
     dispatch(signupStart());
-    // const response = await axios.post(`${BASEURL}/register`, data);
-    // dispatch(signupSuccess(response.data));
-    dispatch(signupSuccess(data));
+    const response = await axios.post(`${BASEURL}/register`, data);
+    dispatch(signupSuccess(response.data));
   } catch (err) {
     dispatch(signupFailure(err.response));
   }
