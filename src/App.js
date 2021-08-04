@@ -14,8 +14,11 @@ import Editprofile from "./components/Editprofile";
 function App() {
   return (
     <div className="App">
-      <Editprofile />
+      {/* <Editprofile /> */}
       <Router>
+        <Route exact path="/home">
+          <Homepage />
+        </Route>
         <Route exact path="/signup">
           <SignUpForm />
         </Route>
