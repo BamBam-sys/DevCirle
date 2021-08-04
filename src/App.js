@@ -10,18 +10,21 @@ import UserProfilePage from "./components/UserProfilePage";
 import ChangePassword from "./components/ChangePassword";
 import SearchPage from "./components/SearchPage";
 import Editprofile from "./components/Editprofile";
+import NavBar from "./components/Navbar";
 
 function App() {
   return (
     <div className="App">
       {/* <Editprofile /> */}
       <Router>
-        <Route path="/home" component={Homepage} />
-        <Route exact path="/signup" component={SignUpForm} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/userprofilepage" component={UserProfilePage} />
-        <Route exact path="/changepassword" component={ChangePassword} />
-        <Route exact path="/searchpage" component={SearchPage} />
+        <Switch>
+          <Route exact path="/" component={Homepage} />
+          <Route path="/signup" component={SignUpForm} />
+          <Route path="/login" component={Login} />
+          <Route path="/userprofilepage" component={UserProfilePage} />
+          <Route path="/changepassword" component={ChangePassword} />
+          <Route path="/searchpage" component={SearchPage} />
+        </Switch>
       </Router>
     </div>
   );

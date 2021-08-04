@@ -18,18 +18,20 @@ function SearchPage() {
 
   return (
     <>
-      <div className='navbar'>
-          <div className='logo'>DevCircle</div>
-          <SearchBar searchVal={searchVal} />
-          <div className='navLinks'>
-              <div className='navLinkItems' id={showLinkItems ? 'hidden' : ''}>
-                  <a href='/homepage'>About</a>
-                  <a href='/loginform'>Log in</a>
-                  <a href='/loginform'>Log out</a>
-                  <a href='/signupform'>Sign up</a>
-              </div>
-              <button onClick={() => setShowLinkItems(!showLinkItems)}><FiMenu /></button>
+      <div className="navbar">
+        <div className="logo">DevCircle</div>
+        <SearchBar searchVal={searchVal} />
+        <div className="navLinks">
+          <div className="navLinkItems" id={showLinkItems ? "hidden" : ""}>
+            <a href="/homepage">About</a>
+            <a href="/login">Log in</a>
+            <a href="/login">Log out</a>
+            <a href="/signup">Sign up</a>
           </div>
+          <button onClick={() => setShowLinkItems(!showLinkItems)}>
+            <FiMenu />
+          </button>
+        </div>
       </div>
       <div className="user-card">
         {cardInfo

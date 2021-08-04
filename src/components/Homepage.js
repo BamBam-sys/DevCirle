@@ -5,37 +5,36 @@ import UserCard from "./UserCard";
 import mockdata from "../MOCK_DATA.json";
 import Footer from "./Footer";
 import "../index.css";
-
+import { Link } from "react-router-dom";
 
 const Homepage = () => {
-    const [cardInfo, setCardInfo] = useState([]);
+  const [cardInfo, setCardInfo] = useState([]);
 
-    useEffect(() => setCardInfo(mockdata), []);
+  useEffect(() => setCardInfo(mockdata), []);
 
-    return (
-        <div>
-            <Navbar />
-            <Hero />
-            <div className="userList">
-                <header>Meet some of our users</header>
-            </div>
-            <div className="user-card">
-                {cardInfo
-                .slice(0, 6).map((data) => (
-                    <UserCard
-                    key={data.id}
-                    name={`${data.first_name} ${data.last_name}`}
-                    email={data.email}
-                    />
-                ))}
-            </div>
-            <div className="seeMore">
-                <a href="#">See More</a>
-            </div>
+  return (
+    <div>
+      <Navbar />
+      <Hero />
+      <div className="userList">
+        <header>Meet some of our users</header>
+      </div>
+      <div className="user-card">
+        {cardInfo.slice(0, 6).map((data) => (
+          <UserCard
+            key={data.id}
+            name={`${data.first_name} ${data.last_name}`}
+            email={data.email}
+          />
+        ))}
+      </div>
+      <div className="seeMore">
+        <Link to="/searchpage">See More</Link>
+      </div>
 
-            <Footer />
-        </div>
-    )
-}
+      <Footer />
+    </div>
+  );
+};
 
-export default Homepage
+export default Homepage;
