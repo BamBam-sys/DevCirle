@@ -1,5 +1,7 @@
 body {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -12,11 +14,206 @@ code {
     monospace;
 }
 
+/* Homepage Styling */
+  /* Navbar */
+  .navbar {
+    background-color:#006fd7;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+   .navbar .logo {
+    flex: 30%;
+    align-self: center;
+    color: #ffff;
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 40px;
+  }
+
+  .navbar .search {
+    flex: 35%;
+    align-self: center;
+    justify-content: center;
+    margin-left: 130px;
+  }
+
+  .navbar .search input {
+    width: 270px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 15px;
+    padding: 10px 0 10px 15px;
+  }
+
+  .navbar .search button {
+    font-size: 15px;
+    padding: 10px;
+    border: none;
+    border-left: 1px solid #cccc;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .navbar .navLinks {
+    flex: 35%;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+  }
+
+  .navbar .navLinks .navLinkItems {
+    max-height: 80px;
+  }
+
+  .navbar .navLinks .navLinkItems a {
+    text-decoration: none;
+    color: #ffff;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0 5px;
+    margin-left: 20px;
+    border-radius: 5px;
+  }
+
+  .navbar .navLinks .navLinkItems a:hover {
+    padding-bottom: 7px;
+    border-bottom: 3px solid #ffff;
+  }
+
+  .navbar .navLinks button {
+    display: none;
+  }
+
+  .navbar .navLinks #hidden {
+    display: flex;
+  }
+
+  /* Hero/Banner styles */
+  .banner {
+    min-height: 90vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .banner .heroContent {
+    text-align: center;
+    padding: 20px;
+    height: 75vh;
+    text-align: center;
+    color: #ffff;
+  }
+
+  .banner .heroContent h1 { 
+    font-size: 70px;
+    position: relative;
+    top: 40vh;
+  }
+
+  .banner .heroContent p { 
+    font-size: 20px; 
+    text-align: center;
+    position: relative;
+    top: 32vh;
+  }
+  .banner .heroContent a {
+    position: relative;
+    top: 32vh;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffff;
+    padding: 7px;
+    border: 2px solid #ffff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .banner .heroContent a:hover {
+    border: none;
+    border-bottom: 2px solid #ffff;
+  }
+  
+ /* Meet our users */
+  .userList,
+  .seeMore {
+    width: 100%;
+    text-align: center;
+    background: #fafafa;
+  }
+
+  .userList > header {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 38.4px;
+    color:#3c3b37;
+    margin-top: 40px;
+  }
+
+  .seeMore {
+    margin: 50px 0;
+  }
+
+  .seeMore > a {
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #3c3b37;
+    padding: 10px;
+    border: 3px solid #3c3b37;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .seeMore > a:hover {
+    border: none;
+    border-bottom: 3px solid #3c3b37;
+  }
+
+  
+  /* Footer styles */
+  .footer {
+    background-color:#006fd7;
+    width: 100%;
+    height: 60px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .footer .logo, .footerLinks {
+    align-self: center;
+    color: #ffff;
+    font-size: 18px;
+    margin-left: 20px;
+  }
+
+  .footer .logo, .footerLinks span {
+    margin-left: 18px;
+  }
+
+  .footer .footerLinks a {
+    color: #ffff;
+    text-decoration: none;
+    padding: 0 5px;
+    margin-left: 18px;
+  }
+
+  .footer .footerLinks a:hover {
+    border: none;
+    border-bottom: 2px solid #ffff;
+    border-radius: 5px;
+  }
+
 /*  */
-body {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+.wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -334,3 +531,151 @@ a {
 .forgot-password {
   margin-top: 10px;
 }
+.user-card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  justify-self: centre;
+  width: 80vw;
+  height: auto;
+  margin: 40px auto 0 auto;
+  background: #fafafa;
+}
+
+.card {
+  border-radius: 10px;
+  background: #50a3a2;
+  color: white;
+  text-align: center;
+  font-weight: 300;
+  box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.5);
+  width: 300px;
+  height: 300px;
+  margin-top: 33px;
+  padding: 10px;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin: 0 75px;
+}
+
+/* Edit profile styles */
+.edit-wrapper {
+  background: #fafafa;
+  width: 100%;
+  height: 40vh;
+}
+
+
+/* Media queries */
+@media (max-width: 850px) {
+  .navbar .navLinks .navLinkItems a {
+    font-size: 15px;
+  }
+
+  .navbar .logo {
+    flex: 20%;
+    font-size: 20px;
+  }
+
+  .navbar .search {
+    flex: 50%;
+  }
+  
+  .navbar .search input {
+    width: 220px;
+    font-size: 12px;
+    padding: 10px 0 10px 15px;
+  }
+
+  .navbar .search button {
+    font-size: 12px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 750px) {
+  .navbar .logo, .navLinks {
+    flex: 30%;
+  }
+
+  .navbar .search {
+    flex: 40%;
+  }
+
+  .navbar .navLinks .navLinkItems {
+    display: none;
+  }
+
+  .navbar .navLinks button {
+    display: flex;
+    border: none;
+    color: #ffff;
+    background-color: #006df7;
+    font-size: 20px;
+  }
+
+  .navbar .navLinks #hidden {
+    position: absolute;
+    left: 0px;
+    top: 80px;
+    height: 200px;
+    max-height: 200px;
+    width: 100%;
+    background-color: #006fd7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar .navLinks #hidden a {
+    margin: 15px;
+  }
+
+}
+
+@media (max-width: 450px) {
+  .navbar .logo {
+    flex: 30%;
+  }
+
+  .navbar .navLinks {
+    flex: 10%;
+    margin: 0 15px 0 5px;
+  }
+
+  .navbar .search {
+    flex: 60%;
+  }
+
+  .navbar .logo {
+    font-size: 15px;
+  }
+
+  .navbar .search input {
+    width: 120px;
+    font-size: 10px;
+    padding: 7px 0 7px 15px;
+  }
+
+  .navbar .search button {
+    font-size: 10px;
+    padding: 7px;
+  }
+}
+
