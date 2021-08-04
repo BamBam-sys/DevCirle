@@ -25,8 +25,8 @@ const loginFailure = (err) => ({
 export const loginAsync = (data) => async (dispatch) => {
   try {
     dispatch(loginStart());
-    const response = await axios.post(`${BASEURL}/users/login`, data);
-    dispatch(loginSuccess(response.data));
+    // const response = await axios.post(`${BASEURL}/users/login`, data);
+    // dispatch(loginSuccess(response.data));
   } catch (err) {
     dispatch(loginFailure(err.response));
   }
