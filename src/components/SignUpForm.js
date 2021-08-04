@@ -57,7 +57,7 @@ const SignUpComponent = () => {
   // console.log(error);
 
   return (
-    <div>
+    <div className="wrapper">
       <form className="form-con" onSubmit={handleSubmit}>
         <span className="times">&times;</span>
         <h2 className="signUp">Sign Up</h2>

@@ -23,7 +23,7 @@ const Login = () => {
   // useSelector((state) => console.log(state.login));
 
   return (
-    <div>
+    <div className="wrapper">
       <form className="form-con formcon2" onSubmit={handleSubmit}>
         <span className="times">&times;</span>
         <h2 className="login">Login</h2>

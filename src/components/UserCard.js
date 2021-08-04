@@ -1,16 +1,17 @@
 import React from "react";
+import CardImage from "../images/avatar.jpg";
 
 function UserCard({ name, email }) {
   return (
-    <div>
+    <>
       <div className="card">
-        <div className="card-image"></div>
+        <img src={CardImage} className="card-image" />
         <div className="card-text">
           <h2>{name}</h2>
           <h3>{email}</h3>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
