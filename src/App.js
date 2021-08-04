@@ -16,24 +16,12 @@ function App() {
     <div className="App">
       {/* <Editprofile /> */}
       <Router>
-        <Route exact path="/home">
-          <Homepage />
-        </Route>
-        <Route exact path="/signup">
-          <SignUpForm />
-        </Route>
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        <Route exact path="/userprofilepage">
-          <UserProfilePage />
-        </Route>
-        <Route exact path="/changepassword">
-          <ChangePassword />
-        </Route>
-        <Route exact path="/searchpage">
-          <SearchPage />
-        </Route>
+        <Route path="/home" component={Homepage} />
+        <Route exact path="/signup" component={SignUpForm} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/userprofilepage" component={UserProfilePage} />
+        <Route exact path="/changepassword" component={ChangePassword} />
+        <Route exact path="/searchpage" component={SearchPage} />
       </Router>
     </div>
   );
