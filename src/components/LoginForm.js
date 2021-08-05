@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { loginAsync } from "../redux/action/loginAction";
-import * as style from "../styles/login.module.css";
+import style from "../styles/login.module.css";
 
 const Login = () => {
   const dispatch = useDispatch();

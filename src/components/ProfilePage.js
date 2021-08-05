@@ -6,7 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import mockdata from "../MOCK_DATA.json";
 import style from "../styles/profilepage.module.css";
 
+import { useParams } from "react-router-dom";
+
 function ProfilePage() {
+  const data = useSelector((state) => state.signup);
+  const { id } = useParams();
   const isLoggedin = true;
   const dispatch = useDispatch();
 
@@ -44,7 +48,6 @@ function ProfilePage() {
     // dispatch(unliked());
   };
 
-  console.log(currentUser);
   return (
     <>
       <div className={style.mainDiv}>
@@ -64,11 +67,13 @@ function ProfilePage() {
         </div>
         <div className={style.bottomDiv}>
           <div className={style.infoUser}>
-            <h2>Lawal Ayobami</h2>
-            <h2>Software Engineer</h2>
-            <h3>Male</h3>
+            <h2>
+              `${data.firstName} ${data.lastName}`
+            </h2>
+            <h2>{data.role}</h2>
+            <h3>{data.gender}</h3>
 
-            <h3>Github Link</h3>
+            <h3>{data.github}</h3>
             {isLoggedin && (
               <button type="button" className={style.pBtn}>
                 Edit profile

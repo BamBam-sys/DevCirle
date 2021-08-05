@@ -1,4 +1,3 @@
 export const config = {
-    BASEURL: process.env === 'development' ? 'http://localhost:8000' : '',
-  };
-  
+  BASEURL: process.env === "development" ? "http://localhost:6000" : "",
+};

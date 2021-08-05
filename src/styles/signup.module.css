@@ -1,7 +1,4 @@
-body {
-  background: linear-gradient(315deg, #eddea4 60%, #f7a072 60%);
-}
-section {
+.section {
   padding-top: 50px;
   padding-bottom: 50px;
   width: 100vw;

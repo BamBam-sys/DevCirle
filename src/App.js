@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import SignUpForm from "./components/SignUpForm";
 import Login from "./components/LoginForm";
-import UserProfilePage from "./components/UserProfilePage";
+import ProfilePage from "./components/ProfilePage";
 import ChangePassword from "./components/ChangePassword";
 import SearchPage from "./components/SearchPage";
 import Editprofile from "./components/Editprofile";
@@ -21,7 +21,7 @@ function App() {
           <Route exact path="/" component={Homepage} />
           <Route path="/signup" component={SignUpForm} />
           <Route path="/login" component={Login} />
-          <Route path="/userprofilepage" component={UserProfilePage} />
+          <Route path="/profilepage" component={ProfilePage} />
           <Route path="/changepassword" component={ChangePassword} />
           <Route path="/searchpage" component={SearchPage} />
         </Switch>

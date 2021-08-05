@@ -1,10 +1,7 @@
-body {
-  /* background: #494850; */
-  background: linear-gradient(315deg, #eddea4 60%, #f7a072 60%);
-}
-section {
+.section {
   padding-top: 50px;
   padding-bottom: 50px;
+  background: linear-gradient(315deg, #eddea4 60%, #f7a072 60%);
   width: 100vw;
   height: 100vh;
   color: #0d1317;
