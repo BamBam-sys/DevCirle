@@ -8,8 +8,9 @@ import Navbar from "../components/Navbar";
 
 const SignUpComponent = () => {
   const history = useHistory();
+
   const data = useSelector((state) => state.signup.data);
-  console.log(data);
+
   const dispatch = useDispatch();
   const [signupData, setSignupData] = useState({
     firstName: "",
@@ -91,6 +92,7 @@ const SignUpComponent = () => {
     // }
     // return setErrors(errors);
   };
+
   return (
     <>
       <Navbar />

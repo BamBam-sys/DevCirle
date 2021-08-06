@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { liked, unliked } from "../redux/action/likeUnlikeActions";
 import { MdThumbDown, MdThumbUp } from "react-icons/md";
@@ -9,10 +9,24 @@ import style from "../styles/profilepage.module.css";
 import { useParams } from "react-router-dom";
 
 function ProfilePage() {
-  const data = useSelector((state) => state.signup);
-  const { id } = useParams();
-  const isLoggedin = true;
-  const dispatch = useDispatch();
+  const loggedInUser = useSelector((state) => state.signup.data);
+
+  const data = loggedInUser.data;
+
+  const isLoggedin = loggedInUser.status;
+
+  console.log(isLoggedin);
+
+  // console.log(
+  //   "fisrt name",
+  //   data.firstName,
+  //   "lastname",
+  //   data.lastName,
+  //   "gender",
+  //   data.gender
+  // );
+
+  // const { id } = useParams();
 
   const [currentUser, setCurrentUser] = useState({
     name: "ayo",
@@ -67,9 +81,7 @@ function ProfilePage() {
         </div>
         <div className={style.bottomDiv}>
           <div className={style.infoUser}>
-            <h2>
-              `${data.firstName} ${data.lastName}`
-            </h2>
+            <h2>{`${data.firstName} ${data.lastName}`}</h2>
             <h2>{data.role}</h2>
             <h3>{data.gender}</h3>
 

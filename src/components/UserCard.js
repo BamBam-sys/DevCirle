@@ -1,5 +1,6 @@
 import React from "react";
 import CardImage from "../images/avatar.jpg";
+import "../index.css";
 
 function UserCard({ name, email }) {
   return (

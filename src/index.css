@@ -541,12 +541,17 @@ a {
   width: 80vw;
   height: auto;
   margin: 40px auto 0 auto;
-  background: #fafafa;
+  /* background: #fafafa; */
 }
 
 .card {
+  margin-left: 5px;
   border-radius: 10px;
-  background: #50a3a2;
+  /* background: #50a3a2; */
+  background-image: url("./images/cool-background\ \(1\).png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: white;
   text-align: center;
   font-weight: 300;
