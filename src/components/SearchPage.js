@@ -1,20 +1,42 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { config } from "../config";
 import SearchBar from "./SearchBar";
 import { FiMenu } from "react-icons/fi";
 import "../index.css";
 import UserCard from "./UserCard";
-import mockdata from "../MOCK_DATA.json";
+import { Link, useHistory } from "react-router-dom";
+import { getToken, removeUserSession } from "../utility/Common";
+import Loading from "./Loading";
+import { getUsersAsync } from "../redux/action/getUserAction";
 
 function SearchPage() {
-  const [cardInfo, setCardInfo] = useState([]);
+  const loading = useSelector((state) => state.getUsers.isLoading);
+  console.log(loading);
+
+  const storageData = localStorage.getItem("userList");
+  const data = JSON.parse(storageData);
+
+  const { BASEURL } = config;
+  const history = useHistory();
   const [search, setSearch] = useState("");
   const [showLinkItems, setShowLinkItems] = useState(false);
 
-  useEffect(() => setCardInfo(mockdata), []);
+  const token = getToken();
 
   const searchVal = (data) => {
     setSearch(data);
   };
+
+  function handleClick(id) {
+    console.log("User was clicked");
+    console.log(id);
+    history.push(`/userprofile/${id}`);
+  }
+
+  function handleLogOut() {
+    removeUserSession();
+  }
 
   return (
     <>
@@ -23,36 +45,48 @@ function SearchPage() {
         <SearchBar searchVal={searchVal} />
         <div className="navLinks">
           <div className="navLinkItems" id={showLinkItems ? "hidden" : ""}>
-            <a href="/homepage">About</a>
-            <a href="/login">Log in</a>
-            <a href="/login">Log out</a>
-            <a href="/signup">Sign up</a>
+            <Link to="/">Home</Link>
+            <Link to="#">About</Link>
+            {token ? null : <Link to="/login">Log in</Link>}
+
+            {token && (
+              <Link to="/login" onClick={handleLogOut}>
+                Log out
+              </Link>
+            )}
+            {token ? null : <Link to="/signup">Sign up</Link>}
           </div>
           <button onClick={() => setShowLinkItems(!showLinkItems)}>
             <FiMenu />
           </button>
         </div>
       </div>
-      <div className="user-card">
-        {cardInfo
-          .filter((val) => {
-            if (search === "") {
-              return val;
-            } else if (
-              val.first_name.toLowerCase().includes(search.toLowerCase()) ||
-              val.last_name.toLowerCase().includes(search.toLowerCase())
-            ) {
-              return val;
-            }
-          })
-          .map((data) => (
-            <UserCard
-              key={data.id}
-              name={`${data.first_name} ${data.last_name}`}
-              email={data.email}
-            />
-          ))}
-      </div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className="user-card">
+          {data.data
+            .filter((val) => {
+              if (search === "") {
+                return val;
+              } else if (
+                val.firstName.toLowerCase().includes(search.toLowerCase()) ||
+                val.lastName.toLowerCase().includes(search.toLowerCase())
+              ) {
+                return val;
+              }
+            })
+            .map((data) => (
+              <UserCard
+                key={data._id}
+                id={data._id}
+                name={`${data.firstName} ${data.lastName}`}
+                email={data.email}
+                onClick={handleClick}
+              />
+            ))}
+        </div>
+      )}
     </>
   );
 }

@@ -10,6 +10,7 @@ import ProfilePage from "./components/ProfilePage";
 import ChangePassword from "./components/ChangePassword";
 import SearchPage from "./components/SearchPage";
 import Editprofile from "./components/Editprofile";
+import UserProfile from "./components/UserProfile";
 import NavBar from "./components/Navbar";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/profilepage" component={ProfilePage} />
           <Route path="/changepassword" component={ChangePassword} />
           <Route path="/searchpage" component={SearchPage} />
+          <Route path="/userprofile/:id" component={UserProfile} />
         </Switch>
       </Router>
     </div>

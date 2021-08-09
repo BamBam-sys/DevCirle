@@ -4,7 +4,6 @@ import Navbar from "./Navbar";
 import { liked, unliked } from "../redux/action/likeUnlikeActions";
 import { MdThumbDown, MdThumbUp } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import mockdata from "../MOCK_DATA.json";
 import style from "../styles/profilepage.module.css";
 import { getUser, getToken } from "../utility/Common";
 
@@ -13,21 +12,27 @@ import Loading from "./Loading";
 import NavBar from "./Navbar";
 
 function ProfilePage() {
-  const loggedInUser = useSelector((state) =>
-    Object.entries(state.login.data).length !== 0 ? state.login : state.signup
-  );
+  const { id } = useParams();
+  const storageData = localStorage.getItem("userList");
+  const userData = JSON.parse(storageData);
 
-  // const loggedInUser = useSelector((state) =>
-  //   console.log(Object.entries(state.login.data).length)
-  // );
+  const data = userData.data;
+  const [user] = data.filter((user) => user._id === id);
+  console.log(user);
 
-  console.log(useSelector((state) => state.login));
-
-  // console.log(loggedInUser.isLoading);
-
-  const user = getUser();
+  const loggedInUser = useSelector((state) => state.getUsers);
+  console.log(loggedInUser);
 
   const token = getToken();
+
+  // console.log(user);
+  // console.log(token);
+
+  // const [user, setUser] = useState([]);
+
+  // useEffect(() => {
+  //   setUser(loggedInUser.data);
+  // }, []);
 
   const [currentUser, setCurrentUser] = useState({
     name: "ayo",

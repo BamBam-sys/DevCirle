@@ -84,7 +84,7 @@ const SignUpComponent = () => {
     }
     dispatch(signupAsync(signupData));
 
-    history.push(`/profilepage/${data.id}`);
+    history.push(`/profilepage`);
 
     // const errors = validateInfo(signupData);
     // if (Object.entries(errors).length === 0) {

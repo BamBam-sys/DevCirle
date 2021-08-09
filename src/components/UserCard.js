@@ -2,10 +2,10 @@ import React from "react";
 import CardImage from "../images/avatar.jpg";
 import "../index.css";
 
-function UserCard({ name, email }) {
+function UserCard({ name, email, onClick, id }) {
   return (
     <>
-      <div className="card">
+      <div className="card" onClick={() => onClick(id)}>
         <img src={CardImage} className="card-image" />
         <div className="card-text">
           <h2>{name}</h2>

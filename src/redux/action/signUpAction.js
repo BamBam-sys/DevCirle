@@ -5,6 +5,7 @@ import {
   SIGN_UP_START,
   SIGN_UP_SUCCESS,
 } from "../types/signUpType";
+import { setUserSession } from "../../utility/Common";
 
 const { BASEURL } = config;
 
@@ -26,9 +27,11 @@ export const signupAsync = (data) => async (dispatch) => {
   try {
     dispatch(signupStart());
     const response = await axios.post(`${BASEURL}/api/v1/register`, data);
+    setUserSession(response.data.data.token.split(" ")[1], response.data.data);
     dispatch(signupSuccess(response.data));
-    // dispatch(signupSuccess(data));
+    console.log("RESPONSE", response.data);
   } catch (err) {
-    dispatch(signupFailure(err.response));
+    console.log("error", err);
+    dispatch(signupFailure(err));
   }
 };
