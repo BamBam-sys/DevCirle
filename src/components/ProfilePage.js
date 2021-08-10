@@ -13,13 +13,8 @@ import Loading from "./Loading";
 import NavBar from "./Navbar";
 
 function ProfilePage() {
-  const loggedInUser = useSelector((state) =>
-    Object.entries(state.login.data).length !== 0 ? state.login : state.signup
-  );
-
-  // const loggedInUser = useSelector((state) =>
-  //   console.log(Object.entries(state.login.data).length)
-  // );
+  const loggedInUser = useSelector((state) => state.login);
+  const signedUpUser = useSelector((state) => state.signup);
 
   console.log(useSelector((state) => state.login));
 
@@ -66,7 +61,7 @@ function ProfilePage() {
   return (
     <>
       <NavBar />
-      {loggedInUser.isLoading ? (
+      {loggedInUser.isLoading || signedUpUser.isLoading ? (
         <Loading />
       ) : (
         <div>
