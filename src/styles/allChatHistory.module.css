@@ -1,0 +1,100 @@
+  
+.container {
+    background-color: rgb(238, 237, 229);
+    width:100%;
+    height:100%;
+}
+
+.circle {
+    margin-top: 2%;
+    border-radius: 50%;
+    /* margin-left: 3%; */
+    width:70px;
+    height:70px;
+    float:left
+}
+.pillow {
+    float: left;
+    margin-left: 20%;
+}
+
+.bed {
+  margin-left: 5%;
+}
+
+#one {
+  /* margin-bottom: 2%; */
+  margin-top: 2%;
+  float:left;
+  margin-left: 14%;
+  overflow: auto;
+  width:80%
+}
+
+#two,#three,#four,#five,#six {
+    /* margin-bottom: 2%; */
+    float:left;
+    margin-left: 14%;
+    overflow: auto;
+    width:80%
+}
+
+.row {
+  /* margin-bottom: 2%; */
+  float:left;
+  margin-left: 14%;
+  overflow: auto;
+  width:80%
+}
+
+#line {
+  margin-top: 09%;
+  width:70%;
+  margin-right: 18%;
+  background-color:grey;
+  color: grey;
+}
+
+.icons{
+    font-size: 25px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    line-height:40px;
+} 
+  
+form.example input[type=username] {
+    padding: 10px;
+    font-size: 30px;
+    border: 3px solid rgb(10, 10, 10);
+    float: left;
+    width: 30%;
+    background:rgb(197, 200, 202);
+    margin-left: 24%;
+    border-radius: 10px 0px 0px 10px;
+    /* margin-bottom: 7%; */
+  }
+  
+  
+form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background:rgb(12, 106, 168);
+    color:black;
+    font-size: 27px;
+    border: 3px solid rgb(20, 19, 19);
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+    border-radius: 0px 10px 10px 0px;
+  }
+  
+form.example button:hover {
+    background: blue
+  }
+  
+
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
