@@ -12,6 +12,7 @@ import SearchPage from "./components/SearchPage";
 import Editprofile from "./components/Editprofile";
 import UserProfile from "./components/UserProfile";
 import NavBar from "./components/Navbar";
+import CurrentUserProfile from "./components/CurrentUserProfile";
 import {io} from "socket.io-client";
 import { useEffect } from "react";
 import { AllChatHistory } from "./components/AllChatHistory";
@@ -23,7 +24,6 @@ const openChat = () => {
   const userInfo = "blank" //feed in logged in user details
   socket.emit("openChat", userInfo)
 }
-
 function App() {
 
   useEffect(() => {    //Adds socket/io listener once front end application is rendered
@@ -44,6 +44,8 @@ function App() {
           <Route path="/userprofile/:id" component={UserProfile} />
           <Route exact path="/chats/:userId" component={AllChatHistory}></Route>
           <Route exact path="/chats/:userId/sendTo/:id" component={Chat}></Route>
+          <Route path="/currentuserprofile" component={CurrentUserProfile} />
+
         </Switch>
       </Router>
     </div>

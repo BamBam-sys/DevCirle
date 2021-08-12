@@ -1,25 +1,43 @@
-.mainDiv {
+.section {
   display: flex;
   justify-content: center;
-  width: 40vw;
+  color: #fffffc;
+}
+
+.container1 {
+  width: 600px;
+  height: 910px;
+  background-image: url("../images/cool-background\ \(2\).png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 50px;
+  display: inline-block;
+  margin-right: 30px;
+  border-radius: 10px;
+}
+
+.container2 {
+  /* width: 400px; */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.about {
+  width: 500px;
   height: 350px;
   padding: 40px;
   box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.5);
   margin-top: 50px;
-  background: #50a3a2;
-  color: #fffffc;
   border-radius: 10px;
-}
-
-.topDiv {
-  height: 320px;
-  width: 350px;
-}
-.bottom-div {
-  height: 320px;
-  width: 600px;
+  background-image: url("../images/cool-background\ \(2\).png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .profileImage {
@@ -39,7 +57,7 @@
 }
 
 .pBtn {
-  margin-left: 15px;
+  margin-right: 10px;
 }
 
 .likes {
@@ -55,16 +73,17 @@
   font-size: 23px;
 }
 
-.mainDiv2 {
-  display: flex;
-  width: 40vw;
+.github {
+  width: 500px;
   height: 350px;
   padding: 40px;
   box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.5);
   margin-top: 50px;
-  background: #50a3a2;
-  color: #fffffc;
   border-radius: 10px;
+  background-image: url("../images/cool-background\ \(2\).png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

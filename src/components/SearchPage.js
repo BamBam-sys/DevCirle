@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { config } from "../config";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import SearchBar from "./SearchBar";
 import { FiMenu } from "react-icons/fi";
 import "../index.css";
@@ -8,7 +7,6 @@ import UserCard from "./UserCard";
 import { Link, useHistory } from "react-router-dom";
 import { getToken, removeUserSession } from "../utility/Common";
 import Loading from "./Loading";
-import { getUsersAsync } from "../redux/action/getUserAction";
 
 function SearchPage() {
   const loading = useSelector((state) => state.getUsers.isLoading);
@@ -17,7 +15,6 @@ function SearchPage() {
   const storageData = localStorage.getItem("userList");
   const data = JSON.parse(storageData);
 
-  const { BASEURL } = config;
   const history = useHistory();
   const [search, setSearch] = useState("");
   const [showLinkItems, setShowLinkItems] = useState(false);
@@ -29,8 +26,6 @@ function SearchPage() {
   };
 
   function handleClick(id) {
-    console.log("User was clicked");
-    console.log(id);
     history.push(`/userprofile/${id}`);
   }
 

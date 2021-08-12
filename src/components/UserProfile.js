@@ -74,7 +74,7 @@ function ProfilePage() {
       {loggedInUser.isLoading ? (
         <Loading />
       ) : (
-        <div>
+        <div className={style.container}>
           <div className={style.mainDiv}>
             <div className={style.topDiv}>
               <div className={style.profileImage}></div>
