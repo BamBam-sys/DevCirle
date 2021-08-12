@@ -16,7 +16,7 @@ import CurrentUserProfile from './components/CurrentUserProfile'
 import { io } from 'socket.io-client'
 import { useEffect } from 'react'
 import { AllChatHistory } from './components/AllChatHistory'
-import { Chat } from './components/Chat'
+import { Chat } from './components/Chatt/Chat'
 
 const socket = io(`http://localhost:6000`)
 
