@@ -30,9 +30,9 @@ export const AllChatHistory = () => {
         const {senderId, receiverId} = data;
         let chats = allChats.filter((item) => { 
             if(userIsReceiver){
-                return senderId !== senderId;
+                return item.id !== senderId;
             } else {
-                return receiverId !== receiverId;
+                return item.id !== receiverId;
             }
         })
         setAllChats([...chats, data]);
@@ -46,7 +46,6 @@ export const AllChatHistory = () => {
        
         socket.on("connected", () => { //When user reconnects set state with chat history from DB
             fetchAllChats();
-
         })
         console.log('useEffect')
 
@@ -90,8 +89,7 @@ export const AllChatHistory = () => {
                             <h4 className={styles.bed}>11:30p.m</h4>
                             </div>   
                             <div>{item.id}</div>
-                            <Avatar id={userId}/>
-
+                            {/* <Avatar id={userId}/>       Avatar component to be done */}
                         </div>
                     )
                 })

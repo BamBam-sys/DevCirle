@@ -13,6 +13,9 @@ import Editprofile from "./components/Editprofile";
 import UserProfile from "./components/UserProfile";
 import NavBar from "./components/Navbar";
 import {io} from "socket.io-client";
+import { useEffect } from "react";
+import { AllChatHistory } from "./components/AllChatHistory";
+import { Chat } from "./components/Chat";
 
 const socket = io(`http://localhost:6000`)
 
@@ -39,8 +42,8 @@ function App() {
           <Route path="/changepassword" component={ChangePassword} />
           <Route path="/searchpage" component={SearchPage} />
           <Route path="/userprofile/:id" component={UserProfile} />
-          <Route exact path="/chats" component={AllChatHistory}></Route>
-          <Route exact path="/chats/:id/sendTo/:id" component={Chat}></Route>
+          <Route exact path="/chats/:userId" component={AllChatHistory}></Route>
+          <Route exact path="/chats/:userId/sendTo/:id" component={Chat}></Route>
         </Switch>
       </Router>
     </div>
