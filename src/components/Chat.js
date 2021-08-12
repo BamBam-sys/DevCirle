@@ -4,9 +4,10 @@ import { io } from 'socket.io-client'
 import InfoBar from '../InfoBar/InfoBar'
 import Input from '../Input/Input'
 import Messages from '../Messages/Messages'
-import './Chat.css'
+import style from '../styles/Chat.module.css'
 
 let socket
+
 
 function Chat ({ location }) {
   const [name, setName] = useState('')
@@ -47,9 +48,9 @@ function Chat ({ location }) {
   // console.log(message, messages);
 
   return (
-    <div className='outerContainer'>
-      <h1 className='projname'>DevCircle</h1>
-      <div className='container'>
+    <div className={style.outerContainer}>
+      <h1 className={style.projname}>DevCircle</h1>
+      <div className={style.container}>
         <InfoBar room={room} />
         <Messages messages={messages} name={name} />
         <Input
