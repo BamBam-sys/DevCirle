@@ -1,0 +1,142 @@
+.row {
+  background-color: lightskyblue;
+  width: 100%;
+  height: 100%;
+}
+
+.circle {
+  margin-top: 2%;
+  margin-right: 2%;
+  border-radius: 50%;
+  margin-bottom: 2%;
+  width: 140px;
+  height: 120px;
+}
+
+.biggy {
+  margin-right: 4%;
+  margin-bottom: 2%;
+}
+.paschal {
+  margin-left: 5%;
+}
+
+.bant {
+  margin-right: 4%;
+}
+
+.icons {
+  margin-left: 20%;
+  margin-top: 2%;
+  height: 5%;
+}
+
+.done {
+  /* margin-right: 55%; */
+  margin-left: 7%;
+  font-size: 40px;
+}
+.done:hover {
+  color: burlywood;
+}
+
+.dones {
+  font-size: 40px;
+}
+
+.tog {
+  margin-right: 50%;
+}
+
+.tag {
+  margin-right: 33%;
+}
+
+.like {
+  margin-left: 09%;
+}
+
+.lola {
+  margin-left: 20%;
+  font-size: 40px;
+}
+
+.lola:hover {
+  color: burlywood;
+}
+
+.about,
+.recent {
+  margin-right: 26%;
+  margin-top: 2%;
+  height: 20%;
+}
+
+.contact {
+  margin-right: 26%;
+  margin-top: 2%;
+  /* margin-bottom: 2%; */
+  padding: 2%;
+  height: 10%;
+}
+
+.head {
+  margin-left: 27%;
+}
+
+.cohort {
+  padding: 2% 6% 6% 4%;
+  margin-left: 27%;
+}
+
+.greek {
+  list-style-type: none;
+  margin-left: 25%;
+  margin-top: 2%;
+  margin-bottom: 3%;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: blue;
+}
+
+.btn {
+  margin-left: 28%;
+  box-shadow: 2px 2px 2px 2px;
+  text-decoration: none;
+  background-color: cornsilk;
+}
+
+.btn:hover {
+  background-color: green;
+}
+.obama {
+  text-decoration: none;
+}
+
+.software,
+.softwares,
+.softwar {
+  margin-top: 2%;
+}
+
+.softwar:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.software:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.softwares:hover {
+  color: blue;
+  cursor: pointer;
+}

@@ -12,6 +12,7 @@ import SearchPage from "./components/SearchPage";
 import Editprofile from "./components/Editprofile";
 import UserProfile from "./components/UserProfile";
 import NavBar from "./components/Navbar";
+import CurrentUserProfile from "./components/CurrentUserProfile";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/changepassword" component={ChangePassword} />
           <Route path="/searchpage" component={SearchPage} />
           <Route path="/userprofile/:id" component={UserProfile} />
+          <Route path="/currentuserprofile" component={CurrentUserProfile} />
         </Switch>
       </Router>
     </div>
