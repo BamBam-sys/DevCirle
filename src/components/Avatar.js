@@ -21,3 +21,16 @@
 //         </div>
 //     )
 // }
+
+import React from 'react'
+import style from '../styles/Avatar.module.css'
+
+function Avatar(props) {
+  return (
+  <div>
+    <img className={style.circle-img} src={props.img} alt='chally' />
+  </div>
+  )
+}
+
+export default Avatar
