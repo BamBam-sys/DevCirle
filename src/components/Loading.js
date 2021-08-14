@@ -1,9 +1,9 @@
 import React from "react";
-import backGround from "../images/cool-background (2).png";
+import style from "../styles/loading.module.css";
 
 function Loading() {
   return (
-    <div>
+    <div className={style.loading}>
       <h1>Loading...</h1>
     </div>
   );

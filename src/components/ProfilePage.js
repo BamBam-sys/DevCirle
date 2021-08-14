@@ -5,6 +5,8 @@ import Navbar from "./Navbar";
 import { liked, unliked } from "../redux/action/likeUnlikeActions";
 import { MdThumbDown, MdThumbUp } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+
 import mockdata from "../MOCK_DATA.json";
 import style from "../styles/profilepage.module.css";
 import { getUser, getToken } from "../utility/Common";
@@ -12,10 +14,13 @@ import { useParams } from "react-router-dom";
 import Loading from "./Loading";
 import NavBar from "./Navbar";
 import Footer from "./Footer";
+import { MdKeyboardBackspace } from "react-icons/md";
 
 function ProfilePage() {
   const loggedInUser = useSelector((state) => state.login);
   const signedUpUser = useSelector((state) => state.signup);
+
+  const history = useHistory();
 
   const user = getUser();
 
@@ -78,16 +83,21 @@ function ProfilePage() {
         <Loading />
       ) : (
         <div className={style.section}>
+          <MdKeyboardBackspace
+            className={style.backIcon}
+            onClick={() => history.goBack()}
+          />
+          <span>Back</span>
           <div className={style.container1}>
             <div className={style.mainDiv}>
               <div className={style.topDiv}>
                 <div className={style.profileImage}></div>
                 <div className={style.likes}>
-                  {currentUser.likes.includes(10) ? (
+                  {/* {currentUser.likes.includes(10) ? (
                     <MdThumbDown onClick={handleUnLike} style={iconStyle} />
                   ) : (
                     <MdThumbUp onClick={handleLike} style={iconStyle} />
-                  )}
+                  )} */}
                   <span className={style.likeCounter}>
                     {currentUser.likes.length}
                   </span>
@@ -116,18 +126,31 @@ function ProfilePage() {
           </div>
           <div className={style.container2}>
             <div className={style.about}>
-              <h2>About me:</h2>
-              <h3>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio,
-                repudiandae ullam officiis id, impedit est iure sequi quae in
-                facilis omnis et natus minima beatae, a minus illum autem eum
-                vel. Repudiandae molestiae itaque, enim temporibus error esse
-                officia nam illo nesciunt fuga dolore tenetur ad atque cumque
-                vitae at.
-              </h3>
+              <h3>About me:</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
+                maiores, repellendus nam possimus atque velit cumque.
+                Exercitationem laboriosam impedit id, veritatis omnis, delectus
+                laudantium numquam provident sint inventore dolorum dolores sed
+                vitae in harum repellat! Velit voluptate molestias soluta cum
+                totam illo provident, quaerat voluptatum debitis suscipit
+                doloremque culpa reiciendis vitae accusamus repellat odit libero
+                sapiente pariatur. Doloribus aliquam minus sint fugit, nostrum
+                ad, quasi corporis, natus veniam architecto necessitatibus
+                dolorum totam ab neque. Quidem illum repellendus ipsa tempora,
+                ea assumenda a beatae quo voluptates ex doloribus. Reprehenderit
+                similique omnis, hic obcaecati, laboriosam iste dolorum ab
+                deserunt soluta aut impedit nihil? Libero quos tempora corrupti
+                quibusdam saepe ullam necessitatibus non rem illo atque nobis
+                officia, consequatur quam modi esse, maxime ex dolore provident
+                aliquid sequi commodi optio quae tempore! Sed, aliquam, magnam
+                labore dignissimos soluta debitis magni quis nobis distinctio
+                laudantium consectetur provident. Veniam doloremque tempora
+                soluta incidunt dolorum ipsam?
+              </p>
             </div>
             <div className={style.github}>
-              <h2>Recent Github Repositories:</h2>
+              <h3>Recent Github Repositories:</h3>
               <ul>
                 <li>Lorem ipsum dolor sit</li>
                 <li>Lorem ipsum dolor sit</li>
