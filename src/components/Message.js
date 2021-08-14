@@ -1,15 +1,15 @@
-import React from 'react'
-import style from '../styles/Message.module.css'
+import React from "react";
+import style from "../styles/Message.module.css";
 
-import Emoji from 'react-emoji'
+import Emoji from "react-emoji";
 
-function Message ({ message: { user, text }, name }) {
-  let sentByCurrentUser = false
+function Message({ message: { user, text }, name }) {
+  let sentByCurrentUser = false;
 
-  const trimmedName = name.trim().toLowerCase()
+  const trimmedName = name.trim().toLowerCase();
 
   if (user === trimmedName) {
-    sentByCurrentUser = true
+    sentByCurrentUser = true;
   }
 
   const option1 = (
@@ -19,7 +19,7 @@ function Message ({ message: { user, text }, name }) {
         <p className={style.messageText}>{Emoji.emojify(text)}</p>
       </div>
     </div>
-  )
+  );
 
   const option2 = (
     <div className={style.messageContianerr}>
@@ -28,11 +28,9 @@ function Message ({ message: { user, text }, name }) {
       </div>
       <p className={style.sentTextt}>{user}</p>
     </div>
-  )
+  );
 
-  
-
-  return sentByCurrentUser ? option1 : option2
+  return sentByCurrentUser ? option1 : option2;
 }
 
-export default Message
+export default Message;
