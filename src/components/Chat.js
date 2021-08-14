@@ -15,26 +15,26 @@ function Chat({ location }) {
   const [messages, setMessages] = useState([]);
   const ENDPOINT = "http://localhost:5000";
 
-  useEffect(() => {
-    const { name, room } = queryString.parse(location.search);
+  // useEffect(() => {
+  //   const { name, room } = queryString.parse(location.search);
 
-    socket = io.connect(ENDPOINT);
+  //   socket = io.connect(ENDPOINT);
 
-    setName(name);
-    setRoom(room);
+  //   setName(name);
+  //   setRoom(room);
 
-    socket.emit("join", { name, room }, (error) => {
-      if (error) {
-        alert(error);
-      }
-    });
-  }, [ENDPOINT, location.search]);
+  //   socket.emit("join", { name, room }, (error) => {
+  //     if (error) {
+  //       alert(error);
+  //     }
+  //   });
+  // }, [ENDPOINT, location.search]);
 
-  useEffect(() => {
-    socket.on("message", (message) => {
-      setMessages([...messages, message]);
-    });
-  }, [messages]);
+  // useEffect(() => {
+  //   socket.on("message", (message) => {
+  //     setMessages([...messages, message]);
+  //   });
+  // }, [messages]);
 
   const sendMessage = (event) => {
     event.preventDefault();

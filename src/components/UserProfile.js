@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom";
 import Loading from "./Loading";
 import NavBar from "./Navbar";
 import Footer from "./Footer";
+import likesApi from "../api/likesApi";
 
 function ProfilePage() {
   const { id } = useParams();
@@ -20,10 +21,11 @@ function ProfilePage() {
 
   const data = userData.data;
   const [user] = data.filter((user) => user._id === id);
-  console.log(user);
 
-  const loggedInUser = useSelector((state) => state.getUsers);
-  console.log(loggedInUser);
+  const loggedInUser = localStorage.getItem("user");
+  const loggedInUserData = JSON.parse(loggedInUser);
+  const loggedInUserId = loggedInUserData.id;
+  console.log(loggedInUserId);
 
   const token = getToken();
 
@@ -38,10 +40,10 @@ function ProfilePage() {
     for (let i = 0; i < 3; i++) {
       repos.push(<li key={data.id}>{data.name}</li>);
     }
-    console.log(repos);
+    // console.log(repos);
   }
 
-  gitHubFetch();
+  // gitHubFetch();
 
   // console.log(user);
   // console.log(token);
@@ -64,7 +66,10 @@ function ProfilePage() {
     color: "#ffffff",
   };
 
+  const toUserId = id;
+
   const handleLike = () => {
+    axios.post(`/users/${loggedInUserId}`, toUserId);
     //put request to the backend accompanied by id of current user responsible for liking, updating the profile
     //update userprofile to reflect the profile being liked by the current user.
     setCurrentUser({

@@ -19,16 +19,16 @@ import { AllChatHistory } from "./components/AllChatHistory";
 import Chat from "./components/Chat";
 import Loading from "./components/Loading";
 
-const socket = io(`http://localhost:6000`);
+// const socket = io(`http://localhost:6000`);
 
-const openChat = () => {
-  const userInfo = "blank"; //feed in logged in user details
-  socket.emit("openChat", userInfo);
-};
+// const openChat = () => {
+//   const userInfo = "blank"; //feed in logged in user details
+//   socket.emit("openChat", userInfo);
+// };
 function App() {
   useEffect(() => {
     //Adds socket/io listener once front end application is rendered
-    openChat();
+    // openChat();
   }, []);
 
   return (
