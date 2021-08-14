@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   color: #fffffc;
-  background-image: url("../images/cool-background\ \(2\).png");
+  /* background-image: url("../images/cool-background\ \(2\).png"); */
   /* background-position: center;
   background-repeat: no-repeat;
   background-size: cover; */
@@ -13,12 +13,12 @@
 .container1 {
   width: 600px;
   height: 910px;
-  /* background-image: url("../images/cool-background\ \(2\).png");
+  background-image: url("../images/cool-background\ \(2\).png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; */
-  border: 1px solid rgba(54, 18, 7, 0.1);
-  backdrop-filter: blur(10px);
+  background-size: cover;
+  /* border: 1px solid rgba(54, 18, 7, 0.1); */
+  /* backdrop-filter: blur(10px); */
   box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.5);
@@ -40,17 +40,17 @@
   width: 500px;
   height: 350px;
   padding: 40px;
-  border: 1px solid rgba(54, 18, 7, 0.1);
+  /* border: 1px solid rgba(54, 18, 7, 0.1); */
   backdrop-filter: blur(10px);
   box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.5);
   margin-top: 50px;
   border-radius: 10px;
-  /* background-image: url("../images/cool-background\ \(2\).png");
+  background-image: url("../images/cool-background\ \(2\).png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; */
+  background-size: cover;
 }
 
 .profileImage {
@@ -92,21 +92,21 @@
   width: 500px;
   height: 350px;
   padding: 40px;
-  border: 1px solid rgba(54, 18, 7, 0.1);
-  backdrop-filter: blur(10px);
+  /* border: 1px solid rgba(54, 18, 7, 0.1); */
   box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 1px 4px 15px 0px rgba(0, 0, 0, 0.5);
   margin-top: 50px;
   border-radius: 10px;
-  /* background-image: url("../images/cool-background\ \(2\).png");
+  background-image: url("../images/cool-background\ \(2\).png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; */
+  background-size: cover;
 }
 
 .backIcon {
   margin-right: 10px;
   font-size: 35px;
   cursor: pointer;
+  color: black;
 }
