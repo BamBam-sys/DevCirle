@@ -17,6 +17,7 @@ import { io } from "socket.io-client";
 import { useEffect } from "react";
 import { AllChatHistory } from "./components/AllChatHistory";
 import { Chat } from "./components/Chat";
+import Loading from "./components/Loading";
 
 const socket = io(`http://localhost:6000`);
 
@@ -49,6 +50,7 @@ function App() {
             component={Chat}
           ></Route>
           <Route path="/currentuserprofile" component={CurrentUserProfile} />
+          <Route path="/loading" component={Loading} />
         </Switch>
       </Router>
     </div>

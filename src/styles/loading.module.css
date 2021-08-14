@@ -1,0 +1,9 @@
+.loading {
+  background: url("../images/cool-background\ \(2\).png");
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: aliceblue;
+}

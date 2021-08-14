@@ -5,6 +5,7 @@ import { signupAsync } from "../redux/action/signUpAction";
 import style from "../styles/signup.module.css";
 import { Link, useHistory } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Footer from "./Footer";
 
 const SignUpComponent = () => {
   const history = useHistory();
@@ -193,6 +194,7 @@ const SignUpComponent = () => {
           </form>
         </div>
       </section>
+      <Footer />
     </>
   );
 };
