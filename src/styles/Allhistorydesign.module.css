@@ -1,0 +1,18 @@
+.card{
+  display: flex;
+  flex-direction: row;
+}
+.bottom{
+  /* border: 1px solid black; */
+  width: 400px;
+  height: 150px;
+}
+.timepara{
+  margin-top: 40px;
+  border: 1px solid black;
+
+}
+.top{
+  margin-top: 25px;
+  margin-right: 100px;
+}

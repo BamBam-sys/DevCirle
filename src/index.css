@@ -7,6 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
@@ -183,9 +184,9 @@ code {
   background-color: #071013;
   width: 100%;
   height: 60px;
-  margin-top: 20px;
   display: flex;
   justify-content: center;
+  padding: 40px;
 }
 
 .footer .logo,
