@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom";
 import Loading from "./Loading";
 import NavBar from "./Navbar";
 import Footer from "./Footer";
+import likesApi from "../api/likesApi"
 
 function ProfilePage() {
   const { id } = useParams();
@@ -67,6 +68,8 @@ function ProfilePage() {
   const handleLike = () => {
     //put request to the backend accompanied by id of current user responsible for liking, updating the profile
     //update userprofile to reflect the profile being liked by the current user.
+    likesApi.post("/users//")
+
     setCurrentUser({
       ...currentUser,
       likes: [...currentUser.likes, 10],
