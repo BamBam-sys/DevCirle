@@ -56,9 +56,9 @@ function ProfilePage() {
   // }, []);
 
   const [currentUser, setCurrentUser] = useState({
-    name: "ayo",
-    likes: [12, 13, 17, 19],
+    name: "ayo",    //don't know what to do with this yet
   });
+  const [likes, setLikes] = useState([]); //likes array holds all users logged in user has liked
 
   const iconStyle = {
     fontSize: "25px",
@@ -69,24 +69,29 @@ function ProfilePage() {
 
   const toUserId = id;
 
-  const handleLike = () => {
-    axios.post(`/users/${loggedInUserId}`, toUserId);
+  const handleLike = async () => {
+    let response = await likesApi.post(`/users/${loggedInUserId}/likes-from-user`, toUserId);
     //put request to the backend accompanied by id of current user responsible for liking, updating the profile
     //update userprofile to reflect the profile being liked by the current user.
-    likesApi.post("/users//")
+   
 
-    setCurrentUser({
-      ...currentUser,
-      likes: [...currentUser.likes, 10],
-    });
+
+
+
+
+    // setCurrentUser({
+    //   ...currentUser,
+    //   likes: [...currentUser.likes, 10],
+    // });
     // dispatch(liked());
   };
 
   // console.log(currentUser.likes.includes(10) ? "thumbs down" : "thumbs up");
 
-  const handleUnLike = () => {
+  const handleUnLike = async () => {
     //put request to the backend accompanied by id of current user responsible for unliking, updating the profile
     //update userprofile to reflect the profile being liked by the current user.
+    let response = await likesApi.delete(`/users/${loggedInUserId}/likes-from-user`, toUserId);
     setCurrentUser({
       ...currentUser,
       likes: currentUser.likes.filter((id) => id !== 10),
