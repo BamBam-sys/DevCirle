@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import Navbar from "./Navbar";
 import Hero from "./Hero";
@@ -12,14 +13,15 @@ import { getUsersAsync } from "../redux/action/getUserAction";
 
 const Homepage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [cardInfo, setCardInfo] = useState([]);
 
   useEffect(() => setCardInfo(mockdata), []);
 
-  useEffect(() => {
+  function handleClick() {
     dispatch(getUsersAsync());
-  }, []);
-
+    history.push("/searchpage");
+  }
   return (
     <div>
       <Navbar />
@@ -36,8 +38,8 @@ const Homepage = () => {
           />
         ))}
       </div>
-      <div className="seeMore" onClick={() => dispatch(getUsersAsync())}>
-        <Link to="/searchpage">See More</Link>
+      <div className="seeMore">
+        <button onClick={handleClick}>See More</button>
       </div>
 
       <Footer />
