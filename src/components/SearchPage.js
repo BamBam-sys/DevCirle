@@ -7,39 +7,13 @@ import UserCard from "./UserCard";
 import { Link, useHistory } from "react-router-dom";
 import { getToken, removeUserSession } from "../utility/Common";
 import Loading from "./Loading";
-import { getUsersAsync } from "../redux/action/getUserAction";
 
 function SearchPage() {
-  // const [isLoading, setIsLoading] = useState(true);
-  const dispatch = useDispatch();
-  // useEffect(() => {
-  //   console.log("effecttttttttttttt");
-  //   dispatch(getUsersAsync());
-  // }, []);
   const getUsers = useSelector((state) => state.getUsers);
 
-  // const loading = getUsers.isLoading;
-  // const storageData = localStorage.getItem("userList");
-  // const data = JSON.parse(storageData);
-
-  const data = getUsers;
-
-  console.log(data.isLoading);
-
-  useEffect(() => {
-    dispatch(getUsersAsync());
-  }, []);
-
-  // const load = () => setIsloading(true);
-
-  // useEffect(() => {
-  //   load();
-  //   console.log(isLoading);
-  // }, []);
-
-  // !data.isLoading && setIsloading(false);
-
-  // Object.entries(data).length === 0 ? null : setIsloading(false);
+  const loading = getUsers.isLoading;
+  const storageData = localStorage.getItem("userList");
+  const data = JSON.parse(storageData);
 
   const history = useHistory();
   const [search, setSearch] = useState("");
@@ -82,7 +56,7 @@ function SearchPage() {
           </button>
         </div>
       </div>
-      {data.isLoading ? (
+      {loading ? (
         <Loading />
       ) : (
         <div className="user-card">
