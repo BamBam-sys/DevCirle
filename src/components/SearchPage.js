@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import SearchBar from "./SearchBar";
 import { FiMenu } from "react-icons/fi";
 import "../index.css";
@@ -9,9 +9,9 @@ import { getToken, removeUserSession } from "../utility/Common";
 import Loading from "./Loading";
 
 function SearchPage() {
-  const loading = useSelector((state) => state.getUsers.isLoading);
-  console.log(loading);
+  const getUsers = useSelector((state) => state.getUsers);
 
+  const loading = getUsers.isLoading;
   const storageData = localStorage.getItem("userList");
   const data = JSON.parse(storageData);
 
