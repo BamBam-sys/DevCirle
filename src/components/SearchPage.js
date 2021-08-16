@@ -7,23 +7,31 @@ import UserCard from "./UserCard";
 import { Link, useHistory } from "react-router-dom";
 import { getToken, removeUserSession } from "../utility/Common";
 import Loading from "./Loading";
+import userFetch from "../api/userFetch";
+import { getUsersAsync } from "../redux/action/getUserAction";
 
 function SearchPage() {
   const getUsers = useSelector((state) => state.getUsers);
+  const dispatch = useDispatch();
 
-  const loading = getUsers.isLoading;
-  const storageData = localStorage.getItem("userList");
-  const data = JSON.parse(storageData);
+  // const loading = getUsers.isLoading;
+  // const storageData = localStorage.getItem("userList");
+  // console.log(localStorage);
+  // const data = JSON.parse(storageData);
 
   const history = useHistory();
   const [search, setSearch] = useState("");
   const [showLinkItems, setShowLinkItems] = useState(false);
+  const [data, setUsers] = useState([]);
+  const [isLoading, setLoading] = useState([false]);
 
   const token = getToken();
 
   const searchVal = (data) => {
     setSearch(data);
   };
+
+ 
 
   function handleClick(id) {
     history.push(`/userprofile/${id}`);
@@ -32,6 +40,28 @@ function SearchPage() {
   function handleLogOut() {
     removeUserSession();
   }
+
+
+  useEffect(() => {
+    dispatch(getUsersAsync());
+  }, [])
+
+  useEffect(() => {
+    console.log("use effect");
+    console.log('before set state', data);
+    const fetchData = async () => {
+      setLoading(true);
+     const response = await userFetch.get("/");
+     setLoading(false);
+     setUsers(response.data.data);
+     console.log('after set state', data);
+   }
+   fetchData();
+
+
+}, [])
+
+
 
   return (
     <>
@@ -56,11 +86,9 @@ function SearchPage() {
           </button>
         </div>
       </div>
-      {loading ? (
-        <Loading />
-      ) : (
+      {isLoading? <Loading/> :(
         <div className="user-card">
-          {data.data
+          {data
             .filter((val) => {
               if (search === "") {
                 return val;
