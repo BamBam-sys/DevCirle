@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import style from "../styles/profilepage.module.css";
 import { getUser, getToken } from "../utility/Common";
 
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import Loading from "./Loading";
 import NavBar from "./Navbar";
 import Footer from "./Footer";
@@ -18,6 +18,7 @@ import userFetch from "../api/userFetch";
 
 function ProfilePage() {
   const { id } = useParams();
+  const history = useHistory();
   const [userState, setUserState] = useState({});
   // const storageData = localStorage.getItem("userList");
   // const userData = JSON.parse(storageData);
@@ -26,6 +27,8 @@ function ProfilePage() {
   const getUsers = useSelector((state) => state.getUsers)
 
   const token = getToken();
+  const loggedInUserId = getUser()
+  console.log(loggedInUserId);
 
  const currentUserLikes = 20; //dummy value
 
@@ -77,9 +80,9 @@ function ProfilePage() {
     //update userprofile to reflect the profile being liked by the current user.
    
     if(token){
-
-    } else{
-      history.push("/l")
+      let response = await likesApi.post(`/users/${loggedInUserId}/likes-from-user`, toUserId)
+    } else {
+      history.push("/login");
     }
 
 
@@ -103,6 +106,11 @@ function ProfilePage() {
   //     likes: currentUser.likes.filter((id) => id !== 10),
   //   });
   //   // dispatch(unliked());
+    if(token){
+      let response = await likesApi.post(`/users/${loggedInUserId}/likes-from-user`, toUserId)
+    } else {
+      history.push("/login");
+    }
   };
 
   return (
