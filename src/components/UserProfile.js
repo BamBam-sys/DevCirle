@@ -12,26 +12,40 @@ import { useParams, useHistory } from "react-router-dom";
 import Loading from "./Loading";
 import NavBar from "./Navbar";
 import Footer from "./Footer";
-import likesApi from "../api/likesApi";
+import likesApi from "../api/likesApi"
+import userFetch from "../api/userFetch";
 import { MdKeyboardBackspace } from "react-icons/md";
+
 
 function ProfilePage() {
   const history = useHistory();
 
   const { id } = useParams();
-  const storageData = localStorage.getItem("userList");
-  const userData = JSON.parse(storageData);
+  const history = useHistory();
+  const [userState, setUserState] = useState({});
+  // const storageData = localStorage.getItem("userList");
+  // const userData = JSON.parse(storageData);
 
-  const data = userData.data;
-  const [user] = data.filter((user) => user._id === id);
+  let repos = [];
+  const getUsers = useSelector((state) => state.getUsers)
 
-  const loggedInUser = localStorage.getItem("user");
-  const loggedInUserData = JSON.parse(loggedInUser);
-  const loggedInUserId = loggedInUserData.id;
-  console.log(user.github);
 
   const token = getToken();
+  const loggedInUserId = getUser()
+  console.log(loggedInUserId);
 
+
+ const currentUserLikes = 20; //dummy value
+ 
+
+  useEffect(() => {
+    console.log(getUsers)
+    const user = userFetch.get(`/${id}`)
+    console.log(user);
+    setUserState(user)
+  }, [])
+
+ 
   const [repo, setRepo] = useState([]);
 
   useEffect(() => {
@@ -51,6 +65,7 @@ function ProfilePage() {
     }
     gitHubFetch();
   }, []);
+
 
   // code below fetches the github repos dynamically
 
@@ -79,6 +94,7 @@ function ProfilePage() {
     name: "ayo", //don't know what to do with this yet
     likes: [12, 13, 25, 47],
   });
+
   const [likes, setLikes] = useState([]); //likes array holds all users logged in user has liked
 
   const iconStyle = {
@@ -90,13 +106,21 @@ function ProfilePage() {
 
   const toUserId = id;
 
+  const currentUser = {
+    likes: [10]
+  }
+
   const handleLike = async () => {
-    let response = await likesApi.post(
-      `/users/${loggedInUserId}/likes-from-user`,
-      toUserId
-    );
+
+  //   let response = await likesApi.post(`/users/${loggedInUserId}/likes-from-user`, toUserId);
     //put request to the backend accompanied by id of current user responsible for liking, updating the profile
     //update userprofile to reflect the profile being liked by the current user.
+   
+    if(token){
+      let response = await likesApi.post(`/users/${loggedInUserId}/likes-from-user`, toUserId)
+    } else {
+      history.push("/login");
+    }
 
     setCurrentUser({
       ...currentUser,
@@ -108,25 +132,27 @@ function ProfilePage() {
   // console.log(currentUser.likes.includes(10) ? "thumbs down" : "thumbs up");
 
   const handleUnLike = async () => {
-    //put request to the backend accompanied by id of current user responsible for unliking, updating the profile
-    //update userprofile to reflect the profile being liked by the current user.
-    let response = await likesApi.delete(
-      `/users/${loggedInUserId}/likes-from-user`,
-      toUserId
-    );
-    setCurrentUser({
-      ...currentUser,
-      likes: currentUser.likes.filter((id) => id !== 10),
-    });
-    // dispatch(unliked());
+
+  //   //put request to the backend accompanied by id of current user responsible for unliking, updating the profile
+  //   //update userprofile to reflect the profile being liked by the current user.
+  //   let response = await likesApi.delete(`/users/${loggedInUserId}/likes-from-user`, toUserId);
+  //   setCurrentUser({
+  //     ...currentUser,
+  //     likes: currentUser.likes.filter((id) => id !== 10),
+  //   });
+  //   // dispatch(unliked());
+    if(token){
+      let response = await likesApi.post(`/users/${loggedInUserId}/likes-from-user`, toUserId)
+    } else {
+      history.push("/login");
+    }
+
   };
 
   return (
     <>
       <NavBar />
-      {loggedInUser.isLoading ? (
-        <Loading />
-      ) : (
+      
         <div className={style.section}>
           <MdKeyboardBackspace
             className={style.backIcon}
@@ -143,17 +169,17 @@ function ProfilePage() {
                     <MdThumbUp onClick={handleLike} style={iconStyle} />
                   )}
                   <span className={style.likeCounter}>
-                    {currentUser.likes.length}
+                    {currentUserLikes}
                   </span>
                   <span className={style.likeCount}>Likes</span>
                 </div>
               </div>
               <div className={style.bottomDiv}>
                 <div className={style.infoUser}>
-                  <h2>{`${user.firstName} ${user.lastName}`}</h2>
-                  <h2>{user.role}</h2>
-                  <h3>{user.gender}</h3>
-                  <h3>{user.github}</h3>
+                  <h2>{`${userState.firstName} ${userState.lastName}`}</h2>
+                  <h2>{userState.role}</h2>
+                  <h3>{userState.gender}</h3>
+                  <h3>{userState.github}</h3>
                   {token && (
                     <button type="button" className={style.pBtn}>
                       Edit profile
@@ -214,7 +240,7 @@ function ProfilePage() {
             </div>
           </div>
         </div>
-      )}
+      
       <Footer />
     </>
   );

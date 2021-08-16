@@ -20,6 +20,7 @@ const Homepage = () => {
 
   function handleClick() {
     dispatch(getUsersAsync());
+    console.log(localStorage)
     history.push("/searchpage");
   }
   return (
