@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useContext, useState, useParams } from "react";
-import { io } from "socket.io-client";
+// import { io } from "socket.io-client";
 import styles from "../styles/allChatHistory.module.css";
 import { FaSearch } from "react-icons/fa";
 import getChatsAPI from "../api/getChatsAPI";
