@@ -76,7 +76,11 @@ function ProfilePage() {
     //put request to the backend accompanied by id of current user responsible for liking, updating the profile
     //update userprofile to reflect the profile being liked by the current user.
    
+    if(token){
 
+    } else{
+      history.push("/l")
+    }
 
 
 
