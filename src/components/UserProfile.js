@@ -25,6 +25,8 @@ function ProfilePage() {
   const data = userData.data;
   const [user] = data.filter((user) => user._id === id);
 
+  console.log(user);
+
   const loggedInUser = localStorage.getItem("user");
   const loggedInUserData = JSON.parse(loggedInUser);
   const loggedInUserId = loggedInUserData.id;
@@ -195,11 +197,11 @@ function ProfilePage() {
             </div>
             <div className={style.github}>
               <h3>Recent Github Repositories:</h3>
-              <ul>
+              {/* <ul>
                 {repo.map((repo) => (
                   <li key={repo.id}>{repo.name}</li>
                 ))}
-              </ul>
+              </ul> */}
 
               {/* use code below instead to dynamically get the repos of the current userr */}
 
