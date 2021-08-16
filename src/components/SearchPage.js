@@ -7,6 +7,7 @@ import UserCard from "./UserCard";
 import { Link, useHistory } from "react-router-dom";
 import { getToken, removeUserSession } from "../utility/Common";
 import Loading from "./Loading";
+import { MdKeyboardBackspace } from "react-icons/md";
 
 function SearchPage() {
   const getUsers = useSelector((state) => state.getUsers);
@@ -56,6 +57,10 @@ function SearchPage() {
           </button>
         </div>
       </div>
+      <MdKeyboardBackspace
+        className="backIcon"
+        onClick={() => history.goBack()}
+      />
       {loading ? (
         <Loading />
       ) : (

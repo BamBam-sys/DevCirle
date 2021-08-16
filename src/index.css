@@ -685,3 +685,12 @@ a {
     padding: 7px;
   }
 }
+
+.backIcon {
+  margin-right: 10px;
+  font-size: 35px;
+  cursor: pointer;
+  color: black;
+  margin-left: 50px;
+  margin-top: 50px;
+}

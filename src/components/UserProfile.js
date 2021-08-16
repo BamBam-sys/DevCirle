@@ -8,13 +8,16 @@ import { useDispatch, useSelector } from "react-redux";
 import style from "../styles/profilepage.module.css";
 import { getUser, getToken } from "../utility/Common";
 
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import Loading from "./Loading";
 import NavBar from "./Navbar";
 import Footer from "./Footer";
 import likesApi from "../api/likesApi";
+import { MdKeyboardBackspace } from "react-icons/md";
 
 function ProfilePage() {
+  const history = useHistory();
+
   const { id } = useParams();
   const storageData = localStorage.getItem("userList");
   const userData = JSON.parse(storageData);
@@ -25,37 +28,56 @@ function ProfilePage() {
   const loggedInUser = localStorage.getItem("user");
   const loggedInUserData = JSON.parse(loggedInUser);
   const loggedInUserId = loggedInUserData.id;
-  console.log(loggedInUserId);
+  console.log(user.github);
 
   const token = getToken();
 
-  let repos = [];
+  const [repo, setRepo] = useState([]);
 
-  async function gitHubFetch() {
-    let res = await axios.get(
-      "https://api.github.com/users/alameensodiq/repos"
-    );
-    let data = res.data;
+  useEffect(() => {
+    async function gitHubFetch() {
+      let res = await axios.get(
+        "https://api.github.com/users/alameensodiq/repos"
+      );
 
-    for (let i = 0; i < 3; i++) {
-      repos.push(<li key={data.id}>{data.name}</li>);
+      let repos = [];
+      if (res.status === 200) {
+        for (let i = 0; i < 3; i++) {
+          repos.push(res.data[i]);
+        }
+      }
+      console.log(res.data);
+      setRepo(repos);
     }
-    // console.log(repos);
-  }
+    gitHubFetch();
+  }, []);
 
-  // gitHubFetch();
+  // code below fetches the github repos dynamically
 
-  // console.log(user);
-  // console.log(token);
-
-  // const [user, setUser] = useState([]);
+  // const gitHubUsername = user.github.slice(19);
+  // console.log(gitHubUsername);
 
   // useEffect(() => {
-  //   setUser(loggedInUser.data);
+  //   async function gitHubFetch() {
+  //     let res = await axios.get(
+  //       `https://api.github.com/users/${gitHubUsername}/repos`
+  //     );
+
+  //     let repos = [];
+  //     if (res.status === 200) {
+  //       for (let i = 0; i < 3; i++) {
+  //         repos.push(res.data[i]);
+  //       }
+  //     }
+  //     setRepo(repos);
+  //   }
+  //   gitHubFetch();
+  //   console.log(repo);
   // }, []);
 
   const [currentUser, setCurrentUser] = useState({
     name: "ayo", //don't know what to do with this yet
+    likes: [12, 13, 25, 47],
   });
   const [likes, setLikes] = useState([]); //likes array holds all users logged in user has liked
 
@@ -76,10 +98,10 @@ function ProfilePage() {
     //put request to the backend accompanied by id of current user responsible for liking, updating the profile
     //update userprofile to reflect the profile being liked by the current user.
 
-    // setCurrentUser({
-    //   ...currentUser,
-    //   likes: [...currentUser.likes, 10],
-    // });
+    setCurrentUser({
+      ...currentUser,
+      likes: [...currentUser.likes, 10],
+    });
     // dispatch(liked());
   };
 
@@ -106,6 +128,10 @@ function ProfilePage() {
         <Loading />
       ) : (
         <div className={style.section}>
+          <MdKeyboardBackspace
+            className={style.backIcon}
+            onClick={() => history.goBack()}
+          />
           <div className={style.container1}>
             <div className={style.mainDiv}>
               <div className={style.topDiv}>
@@ -170,11 +196,21 @@ function ProfilePage() {
             <div className={style.github}>
               <h3>Recent Github Repositories:</h3>
               <ul>
-                <li>Lorem ipsum dolor sit</li>
-                <li>Lorem ipsum dolor sit</li>
-                <li>Lorem ipsum dolor sit</li>
+                {repo.map((repo) => (
+                  <li key={repo.id}>{repo.name}</li>
+                ))}
               </ul>
-              {repos.map((repo) => repo)}
+
+              {/* use code below instead to dynamically get the repos of the current userr */}
+
+              {/* <ul>
+                {repo &&
+                  repo.map((repo) => (
+                    <a key={repo.id} href={repo.html_url} target="_blank">
+                      <li>{repo.name}</li>
+                    </a>
+                  ))}
+              </ul> */}
             </div>
           </div>
         </div>
