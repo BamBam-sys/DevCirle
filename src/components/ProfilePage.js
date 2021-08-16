@@ -27,22 +27,27 @@ function ProfilePage() {
 
   const token = getToken();
 
-  let repos = [];
+  const [repo, setRepo] = useState([]);
+
+  const gitHubUsername = user.github.slice(19);
+  console.log(gitHubUsername);
 
   useEffect(() => {
     async function gitHubFetch() {
       let res = await axios.get(
-        "https://api.github.com/users/alameensodiq/repos"
+        `https://api.github.com/users/${gitHubUsername}/repos`
       );
-      let data = res.data;
 
-      for (let i = 0; i < 3; i++) {
-        repos.push(data[i]);
+      let repos = [];
+      if (res.status === 200) {
+        for (let i = 0; i < 3; i++) {
+          repos.push(res.data[i]);
+        }
       }
+      setRepo(repos);
     }
     gitHubFetch();
-    console.log(repos.length);
-    console.log(repos);
+    console.log(repo);
   }, []);
 
   const [currentUser, setCurrentUser] = useState({
@@ -114,7 +119,12 @@ function ProfilePage() {
                   <h2>{`${user.firstName} ${user.lastName}`}</h2>
                   <h2>{user.role}</h2>
                   <h3>{user.gender}</h3>
-                  <h3>{user.github}</h3>
+                  <h3>
+                    GitHub profile: <br />
+                    <a href={user.github} target="_blank">
+                      {user.github}
+                    </a>
+                  </h3>
                   {token && (
                     <button type="button" className={style.pBtn}>
                       Edit profile
@@ -157,9 +167,12 @@ function ProfilePage() {
             <div className={style.github}>
               <h3>Recent Github Repositories:</h3>
               <ul>
-                {repos.length === 0
-                  ? null
-                  : repos.map((repo) => <li key={repo.id}>{repo.name}</li>)}
+                {repo &&
+                  repo.map((repo) => (
+                    <a key={repo.id} href={repo.html_url} target="_blank">
+                      <li>{repo.name}</li>
+                    </a>
+                  ))}
               </ul>
             </div>
           </div>

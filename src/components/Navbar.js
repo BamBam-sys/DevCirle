@@ -34,11 +34,15 @@ const NavBar = ({ SearchBar }) => {
       <div className="navLinks">
         <div className="navLinkItems" id={showLinkItems ? "hidden" : ""}>
           <Link to="/">Home</Link>
+
           <a href="#">About</a>
           {token ? (
-            <Link to="/login" onClick={logOut}>
-              Log out
-            </Link>
+            <>
+              <Link to="/profilepage">Profile</Link>
+              <Link to="/login" onClick={logOut}>
+                Log out
+              </Link>
+            </>
           ) : (
             <Link to="/login">Log in</Link>
           )}

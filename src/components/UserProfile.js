@@ -14,9 +14,12 @@ import NavBar from "./Navbar";
 import Footer from "./Footer";
 import likesApi from "../api/likesApi"
 import userFetch from "../api/userFetch";
+import { MdKeyboardBackspace } from "react-icons/md";
 
 
 function ProfilePage() {
+  const history = useHistory();
+
   const { id } = useParams();
   const history = useHistory();
   const [userState, setUserState] = useState({});
@@ -26,12 +29,13 @@ function ProfilePage() {
   let repos = [];
   const getUsers = useSelector((state) => state.getUsers)
 
+
   const token = getToken();
   const loggedInUserId = getUser()
   console.log(loggedInUserId);
 
- const currentUserLikes = 20; //dummy value
 
+ const currentUserLikes = 20; //dummy value
  
 
   useEffect(() => {
@@ -41,23 +45,55 @@ function ProfilePage() {
     setUserState(user)
   }, [])
 
-  async function gitHubFetch() {
-    let res = await axios.get(
-      "https://api.github.com/users/alameensodiq/repos"
-    );
-    let data = res.data;
+ 
+  const [repo, setRepo] = useState([]);
 
-    for (let i = 0; i < 3; i++) {
-      repos.push(<li key={data.id}>{data.name}</li>);
+  useEffect(() => {
+    async function gitHubFetch() {
+      let res = await axios.get(
+        "https://api.github.com/users/alameensodiq/repos"
+      );
+
+      let repos = [];
+      if (res.status === 200) {
+        for (let i = 0; i < 3; i++) {
+          repos.push(res.data[i]);
+        }
+      }
+      console.log(res.data);
+      setRepo(repos);
     }
-    // console.log(repos);
-  }
+    gitHubFetch();
+  }, []);
 
-  gitHubFetch();
 
-  // console.log(user);
-  // console.log(token);
+  // code below fetches the github repos dynamically
 
+  // const gitHubUsername = user.github.slice(19);
+  // console.log(gitHubUsername);
+
+  // useEffect(() => {
+  //   async function gitHubFetch() {
+  //     let res = await axios.get(
+  //       `https://api.github.com/users/${gitHubUsername}/repos`
+  //     );
+
+  //     let repos = [];
+  //     if (res.status === 200) {
+  //       for (let i = 0; i < 3; i++) {
+  //         repos.push(res.data[i]);
+  //       }
+  //     }
+  //     setRepo(repos);
+  //   }
+  //   gitHubFetch();
+  //   console.log(repo);
+  // }, []);
+
+  const [currentUser, setCurrentUser] = useState({
+    name: "ayo", //don't know what to do with this yet
+    likes: [12, 13, 25, 47],
+  });
 
   const [likes, setLikes] = useState([]); //likes array holds all users logged in user has liked
 
@@ -75,6 +111,7 @@ function ProfilePage() {
   }
 
   const handleLike = async () => {
+
   //   let response = await likesApi.post(`/users/${loggedInUserId}/likes-from-user`, toUserId);
     //put request to the backend accompanied by id of current user responsible for liking, updating the profile
     //update userprofile to reflect the profile being liked by the current user.
@@ -85,19 +122,17 @@ function ProfilePage() {
       history.push("/login");
     }
 
-
-
-
-    // setCurrentUser({
-    //   ...currentUser,
-    //   likes: [...currentUser.likes, 10],
-    // });
+    setCurrentUser({
+      ...currentUser,
+      likes: [...currentUser.likes, 10],
+    });
     // dispatch(liked());
   };
 
   // console.log(currentUser.likes.includes(10) ? "thumbs down" : "thumbs up");
 
   const handleUnLike = async () => {
+
   //   //put request to the backend accompanied by id of current user responsible for unliking, updating the profile
   //   //update userprofile to reflect the profile being liked by the current user.
   //   let response = await likesApi.delete(`/users/${loggedInUserId}/likes-from-user`, toUserId);
@@ -111,6 +146,7 @@ function ProfilePage() {
     } else {
       history.push("/login");
     }
+
   };
 
   return (
@@ -118,6 +154,10 @@ function ProfilePage() {
       <NavBar />
       
         <div className={style.section}>
+          <MdKeyboardBackspace
+            className={style.backIcon}
+            onClick={() => history.goBack()}
+          />
           <div className={style.container1}>
             <div className={style.mainDiv}>
               <div className={style.topDiv}>
@@ -182,11 +222,21 @@ function ProfilePage() {
             <div className={style.github}>
               <h3>Recent Github Repositories:</h3>
               <ul>
-                <li>Lorem ipsum dolor sit</li>
-                <li>Lorem ipsum dolor sit</li>
-                <li>Lorem ipsum dolor sit</li>
+                {repo.map((repo) => (
+                  <li key={repo.id}>{repo.name}</li>
+                ))}
               </ul>
-              {repos.map((repo) => repo)}
+
+              {/* use code below instead to dynamically get the repos of the current userr */}
+
+              {/* <ul>
+                {repo &&
+                  repo.map((repo) => (
+                    <a key={repo.id} href={repo.html_url} target="_blank">
+                      <li>{repo.name}</li>
+                    </a>
+                  ))}
+              </ul> */}
             </div>
           </div>
         </div>

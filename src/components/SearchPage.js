@@ -7,8 +7,12 @@ import UserCard from "./UserCard";
 import { Link, useHistory } from "react-router-dom";
 import { getToken, removeUserSession } from "../utility/Common";
 import Loading from "./Loading";
+
 import userFetch from "../api/userFetch";
 import { getUsersAsync } from "../redux/action/getUserAction";
+
+import { MdKeyboardBackspace } from "react-icons/md";
+
 
 function SearchPage() {
   const getUsers = useSelector((state) => state.getUsers);
@@ -86,7 +90,14 @@ function SearchPage() {
           </button>
         </div>
       </div>
-      {isLoading? <Loading/> :(
+
+      <MdKeyboardBackspace
+        className="backIcon"
+        onClick={() => history.goBack()}
+      />
+      {isLoading ? (
+        <Loading />
+      ) : (
         <div className="user-card">
           {data
             .filter((val) => {
