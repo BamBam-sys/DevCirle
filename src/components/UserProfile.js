@@ -12,8 +12,7 @@ import { useParams } from "react-router-dom";
 import Loading from "./Loading";
 import NavBar from "./Navbar";
 import Footer from "./Footer";
-import likesApi from "../api/likesApi"
-
+import likesApi from "../api/likesApi";
 
 function ProfilePage() {
   const { id } = useParams();
@@ -56,7 +55,7 @@ function ProfilePage() {
   // }, []);
 
   const [currentUser, setCurrentUser] = useState({
-    name: "ayo",    //don't know what to do with this yet
+    name: "ayo", //don't know what to do with this yet
   });
   const [likes, setLikes] = useState([]); //likes array holds all users logged in user has liked
 
@@ -70,14 +69,12 @@ function ProfilePage() {
   const toUserId = id;
 
   const handleLike = async () => {
-    let response = await likesApi.post(`/users/${loggedInUserId}/likes-from-user`, toUserId);
+    let response = await likesApi.post(
+      `/users/${loggedInUserId}/likes-from-user`,
+      toUserId
+    );
     //put request to the backend accompanied by id of current user responsible for liking, updating the profile
     //update userprofile to reflect the profile being liked by the current user.
-   
-
-
-
-
 
     // setCurrentUser({
     //   ...currentUser,
@@ -91,7 +88,10 @@ function ProfilePage() {
   const handleUnLike = async () => {
     //put request to the backend accompanied by id of current user responsible for unliking, updating the profile
     //update userprofile to reflect the profile being liked by the current user.
-    let response = await likesApi.delete(`/users/${loggedInUserId}/likes-from-user`, toUserId);
+    let response = await likesApi.delete(
+      `/users/${loggedInUserId}/likes-from-user`,
+      toUserId
+    );
     setCurrentUser({
       ...currentUser,
       likes: currentUser.likes.filter((id) => id !== 10),

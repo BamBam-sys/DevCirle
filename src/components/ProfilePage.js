@@ -27,22 +27,25 @@ function ProfilePage() {
 
   const token = getToken();
 
-  let repos = [];
+  const [repo, setRepo] = useState([]);
 
   useEffect(() => {
     async function gitHubFetch() {
       let res = await axios.get(
         "https://api.github.com/users/alameensodiq/repos"
       );
-      let data = res.data;
 
-      for (let i = 0; i < 3; i++) {
-        repos.push(data[i]);
+      let repos = [];
+      if (res.status === 200) {
+        for (let i = 0; i < 3; i++) {
+          repos.push(res.data[i]);
+        }
       }
+      setRepo(repos);
     }
     gitHubFetch();
-    console.log(repos.length);
-    console.log(repos);
+    console.log(repo);
+    console.log(repo.length);
   }, []);
 
   const [currentUser, setCurrentUser] = useState({
@@ -157,9 +160,7 @@ function ProfilePage() {
             <div className={style.github}>
               <h3>Recent Github Repositories:</h3>
               <ul>
-                {repos.length === 0
-                  ? null
-                  : repos.map((repo) => <li key={repo.id}>{repo.name}</li>)}
+                {repo && repo.map((repo) => <li key={repo.id}>{repo.name}</li>)}
               </ul>
             </div>
           </div>
