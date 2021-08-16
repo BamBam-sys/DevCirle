@@ -13,7 +13,7 @@ import Editprofile from "./components/Editprofile";
 import UserProfile from "./components/UserProfile";
 import NavBar from "./components/Navbar";
 import CurrentUserProfile from "./components/CurrentUserProfile";
-import { io } from "socket.io-client";
+// import { io } from "socket.io-client";
 import { useEffect } from "react";
 import { AllChatHistory } from "./components/AllChatHistory";
 import Chat from "./components/Chat";
