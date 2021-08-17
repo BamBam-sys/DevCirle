@@ -20,13 +20,13 @@ function ProfilePage() {
   const history = useHistory();
 
   const { id } = useParams();
-  const history = useHistory();
-  const [userState, setUserState] = useState({});
-  // const storageData = localStorage.getItem("userList");
-  // const userData = JSON.parse(storageData);
+  // const [userState, setUserState] = useState({});
+  const storageData = localStorage.getItem("userList");
+  const userData = JSON.parse(storageData);
+  const [userState] = userData.data.filter((user) => user._id === id);
 
   let repos = [];
-  const getUsers = useSelector((state) => state.getUsers);
+  // const getUsers = useSelector((state) => state.getUsers);
 
   const token = getToken();
   const loggedInUserId = getUser();
@@ -34,12 +34,12 @@ function ProfilePage() {
 
   const currentUserLikes = 20; //dummy value
 
-  useEffect(() => {
-    console.log(getUsers);
-    const user = userFetch.get(`/${id}`);
-    console.log(user);
-    setUserState(user);
-  }, []);
+  // useEffect(() => {
+  //   console.log(getUsers);
+  //   const user = userFetch.get(`/${id}`);
+  //   console.log(user);
+  //   setUserState(user);
+  // }, []);
 
   const [repo, setRepo] = useState([]);
 
@@ -99,10 +99,6 @@ function ProfilePage() {
   };
 
   const toUserId = id;
-
-  const currentUser = {
-    likes: [10],
-  };
 
   const handleLike = async () => {
     //   let response = await likesApi.post(`/users/${loggedInUserId}/likes-from-user`, toUserId);
@@ -216,22 +212,17 @@ function ProfilePage() {
           </div>
           <div className={style.github}>
             <h3>Recent Github Repositories:</h3>
-            {/* <ul>
-                {repo.map((repo) => (
-                  <li key={repo.id}>{repo.name}</li>
-                ))}
-              </ul> */}
 
-            {/* use code below instead to dynamically get the repos of the current userr */}
-
-            {/* <ul>
+            {repo && (
+              <ul>
                 {repo &&
                   repo.map((repo) => (
                     <a key={repo.id} href={repo.html_url} target="_blank">
                       <li>{repo.name}</li>
                     </a>
                   ))}
-              </ul> */}
+              </ul>
+            )}
           </div>
         </div>
       </div>
