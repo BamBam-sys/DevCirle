@@ -2,7 +2,6 @@ import { config } from "../../config";
 import axios from "axios";
 import setAuthHeader from "../../utility/setAuthHeader";
 import { setUserSession } from "../../utility/Common";
-import { getResponse } from "../../components/LoginForm";
 
 import {
   LOG_IN_FAILURE,
@@ -30,16 +29,12 @@ export const loginAsync = (data) => async (dispatch) => {
   try {
     dispatch(loginStart());
     const response = await axios.post(`${BASEURL}api/v1/login`, data);
-
     setAuthHeader(response.data.data.token);
 
     setUserSession(response.data.data.token.split(" ")[1], response.data.data);
 
     dispatch(loginSuccess(response.data));
-
-    // return response.data;
   } catch (err) {
     dispatch(loginFailure(err));
-    setUserSession(null, err);
   }
 };

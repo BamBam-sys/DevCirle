@@ -33,7 +33,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Editprofile /> */}
+
       <Router>
         <Switch>
           <Route exact path="/" component={Homepage} />

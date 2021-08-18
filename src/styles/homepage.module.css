@@ -1,0 +1,146 @@
+/* Hero/Banner styles */
+.banner {
+  min-height: 90vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner .heroContent {
+  text-align: center;
+  padding: 20px;
+  height: 75vh;
+  text-align: center;
+  color: #ffff;
+}
+
+.banner .heroContent h1 {
+  font-size: 35px;
+  position: relative;
+  top: 40vh;
+}
+
+.banner .heroContent p {
+  font-size: 15px;
+  text-align: center;
+  position: relative;
+  top: 34vh;
+}
+.banner .heroContent a {
+  position: relative;
+  top: 34vh;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #ffff;
+  padding: 7px;
+  border: 2px solid #ffff;
+  border-radius: 5px;
+}
+
+/* Meet our users */
+.userList,
+.seeMore {
+  width: 100%;
+  text-align: center;
+}
+
+.userList > header {
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 38.4px;
+  color: #3c3b37;
+  margin-top: 40px;
+}
+
+.user-card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  justify-self: centre;
+  margin: 20px auto 0 auto;
+}
+
+.seeMore {
+  margin: 50px 0;
+}
+
+.seeMore > button {
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: #ffff;
+  color: #3c3b37;
+  padding: 10px;
+  border: 3px solid #3c3b37;
+  border-radius: 5px;
+}
+
+/* Media queries */
+@media (min-width: 420px) {
+    .banner .heroContent h1 {
+        font-size: 40px;
+    }
+
+    .banner .heroContent p {
+        font-size: 20px;
+        top: 35vh;
+    }
+
+    .banner .heroContent a {
+        font-size: 20px;
+        top: 35vh;
+    }
+}
+
+@media (min-width: 760px) {
+    .banner .heroContent h1 {
+        font-size: 60px;
+    }
+
+    .banner .heroContent p {
+        font-size: 20px;
+        top: 32vh;
+    }
+
+    .banner .heroContent a {
+        font-size: 20px;
+        top: 32vh;
+    }
+}
+
+@media (min-width: 960px) {
+    .banner .heroContent h1 {
+        font-size: 70px;
+        top: 40vh;
+    }
+
+    .banner .heroContent a {
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+    .banner .heroContent a:hover {
+        border: none;
+        border-bottom: 2px solid #ffff;
+    }
+
+    /* Meet our users */
+    .userList > header {
+        font-size: 32px;
+        line-height: 38.4px;
+        margin-top: 40px;
+    }
+
+    .seeMore > button {
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+    .seeMore > button:hover {
+        border: none;
+        border-bottom: 3px solid #3c3b37;
+    }
+}
