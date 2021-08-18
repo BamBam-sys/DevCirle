@@ -27,12 +27,13 @@ function ProfilePage() {
 
   const token = getToken();
 
-  const [userName, setUserName] = useState("");
   const [repo, setRepo] = useState([]);
 
+  let userName;
+
   useEffect(() => {
+    userName = user.github.split("/")[3];
     async function gitHubFetch() {
-      setUserName(user.github.split("/")[3]);
       let res = await axios.get(
         `https://api.github.com/users/${userName}/repos`
       );

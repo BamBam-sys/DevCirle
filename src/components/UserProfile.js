@@ -25,9 +25,30 @@ function ProfilePage() {
   const userData = JSON.parse(storageData);
   const [userState] = userData.data.filter((user) => user._id === id);
 
-  let repos = [];
-  // const getUsers = useSelector((state) => state.getUsers);
+  const [repo, setRepo] = useState([]);
 
+  let userName;
+
+  useEffect(() => {
+    userName = userState.github.split("/")[3];
+    async function gitHubFetch() {
+      let res = await axios.get(
+        `https://api.github.com/users/${userName}/repos`
+      );
+
+      console.log(res.data);
+
+      let repos = [];
+      if (res.status === 200) {
+        for (let i = 0; i < 3; i++) {
+          repos.push(res.data[i]);
+        }
+      }
+      setRepo(repos);
+    }
+    gitHubFetch();
+    console.log(repo);
+  }, []);
   const token = getToken();
   const loggedInUserId = getUser();
   console.log(loggedInUserId);
@@ -39,49 +60,6 @@ function ProfilePage() {
   //   const user = userFetch.get(`/${id}`);
   //   console.log(user);
   //   setUserState(user);
-  // }, []);
-
-  const [repo, setRepo] = useState([]);
-
-  useEffect(() => {
-    async function gitHubFetch() {
-      let res = await axios.get(
-        "https://api.github.com/users/alameensodiq/repos"
-      );
-
-      let repos = [];
-      if (res.status === 200) {
-        for (let i = 0; i < 3; i++) {
-          repos.push(res.data[i]);
-        }
-      }
-      console.log(res.data);
-      setRepo(repos);
-    }
-    gitHubFetch();
-  }, []);
-
-  // code below fetches the github repos dynamically
-
-  // const gitHubUsername = user.github.slice(19);
-  // console.log(gitHubUsername);
-
-  // useEffect(() => {
-  //   async function gitHubFetch() {
-  //     let res = await axios.get(
-  //       `https://api.github.com/users/${gitHubUsername}/repos`
-  //     );
-
-  //     let repos = [];
-  //     if (res.status === 200) {
-  //       for (let i = 0; i < 3; i++) {
-  //         repos.push(res.data[i]);
-  //       }
-  //     }
-  //     setRepo(repos);
-  //   }
-  //   gitHubFetch();
-  //   console.log(repo);
   // }, []);
 
   const [currentUser, setCurrentUser] = useState({
