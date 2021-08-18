@@ -21,11 +21,10 @@ function ProfilePage() {
   const history = useHistory();
 
   const { id } = useParams();
-  const history = useHistory();
   const [userState, setUserState] = useState({});
   // const storageData = localStorage.getItem("userList");
   // const userData = JSON.parse(storageData);
-
+  // console.log(userState);
   let repos = [];
   const getUsers = useSelector((state) => state.getUsers)
 
@@ -106,9 +105,9 @@ function ProfilePage() {
 
   const toUserId = id;
 
-  const currentUser = {
-    likes: [10]
-  }
+  // const currentUser = {
+  //   likes: [10]
+  // }
 
   const handleLike = async () => {
 
