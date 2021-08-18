@@ -21,6 +21,7 @@ function ProfilePage() {
   const loggedInUser = useSelector((state) => state.login);
   const signedUpUser = useSelector((state) => state.signup);
 
+
   const history = useHistory();
 
   const user = getUser();
@@ -28,27 +29,36 @@ function ProfilePage() {
   const token = getToken();
 
   const [repo, setRepo] = useState([]);
+  
 
-  // const gitHubUsername = user.github.slice(19);
-  // console.log(gitHubUsername);
+  
 
-  // useEffect(() => {
-  //   async function gitHubFetch() {
-  //     let res = await axios.get(
-  //       `https://api.github.com/users/${gitHubUsername}/repos`
-  //     );
+    
+  
 
-  //     let repos = [];
-  //     if (res.status === 200) {
-  //       for (let i = 0; i < 3; i++) {
-  //         repos.push(res.data[i]);
-  //       }
-  //     }
-  //     setRepo(repos);
-  //   }
-  //   gitHubFetch();
-  //   console.log(repo);
-  // }, []);
+      
+  let userName;
+
+  useEffect(() => {
+    userName = user.github.split("/")[3]
+    async function gitHubFetch() {
+      let res = await axios.get(
+        `https://api.github.com/users/${userName}/repos`
+      );
+  
+      console.log(res.data, "AAAAAA")
+      var repos = [];
+      if (res.status === 200) {
+        for (let i = 0; i < 3; i++) {
+          repos.push(res.data[i]);
+        }
+      }
+      setRepo(repos);
+    }
+    gitHubFetch();
+    
+  }, []);
+
 
   const [currentUser, setCurrentUser] = useState({
     name: "ayo",
@@ -167,12 +177,12 @@ function ProfilePage() {
             <div className={style.github}>
               <h3>Recent Github Repositories:</h3>
               <ul>
-                {/* {repo &&
+                {Object.entries(repo).length !== 0 &&
                   repo.map((repo) => (
-                    <a key={repo.id} href={repo.html_url} target="_blank">
+                    <a key={repo.id} href={`${user.github}/${repo.name}`} target="_blank">
                       <li>{repo.name}</li>
                     </a>
-                  ))} */}
+                  ))}
               </ul>
             </div>
           </div>
