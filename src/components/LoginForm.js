@@ -3,14 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { loginAsync } from "../redux/action/loginAction";
 import style from "../styles/login.module.css";
-import { getUser } from "../utility/Common";
 import NavBar from "./Navbar";
 
 const Login = () => {
-  const { error } = useSelector((state) => state.login);
-
-  // const data = getUser();
-
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -22,15 +17,11 @@ const Login = () => {
   function handleChange(e) {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   }
+
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(loginAsync(loginData));
-    setLoginData({
-      email: "",
-      password: "",
-    });
-
-    history.push("/profilepage");
+    history.push(`/profilepage`);
   }
 
   return (

@@ -1,15 +1,15 @@
-import '../index.css'
-import { FiMail } from 'react-icons/fi'
-import { FaFacebookF } from 'react-icons/fa'
-import { FaLinkedinIn } from 'react-icons/fa'
+import footStyles from "../styles/footer.module.css";
+import { FiMail } from "react-icons/fi";
+import { FaFacebookF } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {
     const now = new Date();
     const thisYear = now.getFullYear();
     return (
-        <div className='footer'>
-            <div className='logo'>&copy;DevCircle {thisYear}</div>
-            <div className='footerLinks'>
+        <div className={footStyles.footer}>
+            <div className={footStyles.logo}>&copy;DevCircle {thisYear}</div>
+            <div className={footStyles.footerLinks}>
                 <a href='/about'>About</a>
                 <span>Contact us :</span>
                 <a href='#'><FiMail /></a>
