@@ -54,7 +54,7 @@ function SearchPage() {
     console.log("use effect");
     console.log('before set state', data);
     const fetchData = async () => {
-      setLoading(false);
+      setLoading(true);
      const response = await userFetch.get("/");
      setLoading(false);
      setUsers(response.data.data);
