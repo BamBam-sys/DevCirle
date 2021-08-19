@@ -20,10 +20,12 @@ function ProfilePage() {
   const history = useHistory();
 
   const { id } = useParams();
+
   // const [userState, setUserState] = useState({});
   const storageData = localStorage.getItem("userList");
   const userData = JSON.parse(storageData);
   const [userState] = userData.data.filter((user) => user._id === id);
+
 
   const [repo, setRepo] = useState([]);
 
@@ -77,6 +79,11 @@ function ProfilePage() {
   };
 
   const toUserId = id;
+
+  // const currentUser = {
+  //   likes: [10]
+  // }
+
 
   const handleLike = async () => {
     //   let response = await likesApi.post(`/users/${loggedInUserId}/likes-from-user`, toUserId);
@@ -195,7 +202,7 @@ function ProfilePage() {
               <ul>
                 {repo &&
                   repo.map((repo) => (
-                    <a key={repo.id} href={repo.html_url} target="_blank">
+                    <a key={repo.id} href={`${userState.github}/${repo.name}`} target="_blank">
                       <li>{repo.name}</li>
                     </a>
                   ))}

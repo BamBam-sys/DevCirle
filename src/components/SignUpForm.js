@@ -26,6 +26,8 @@ const SignUpComponent = () => {
   const [errors, setErrors] = useState({});
 
   const handleFormChanges = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
     setSignupData({ ...signupData, [e.target.name]: e.target.value });
   };
 
@@ -85,7 +87,10 @@ const SignUpComponent = () => {
     }
     dispatch(signupAsync(signupData));
 
-    history.push(`/profilepage`);
+    setTimeout(() => {
+      history.push(`/profilepage`);
+    }, 3000);
+    
 
     // const errors = validateInfo(signupData);
     // if (Object.entries(errors).length === 0) {
