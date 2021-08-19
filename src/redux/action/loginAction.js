@@ -39,6 +39,5 @@ export const loginAsync = (data) => async (dispatch) => {
     // return response.data;
   } catch (err) {
     dispatch(loginFailure(err));
-    setUserSession(null, err);
   }
 };

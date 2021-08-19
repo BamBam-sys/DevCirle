@@ -29,21 +29,15 @@ function ProfilePage() {
   const token = getToken();
 
   const [repo, setRepo] = useState([]);
-  
 
-  
-
-    
-  
-
-      
+     
   let userName;
 
   useEffect(() => {
     userName = user.github.split("/")[3]
     async function gitHubFetch() {
       let res = await axios.get(
-        `https://api.github.com/users/${userName}/repos`
+        `https://api.github.com/users/${gitHubUsername}/repos`
       );
   
       console.log(res.data, "AAAAAA")
@@ -177,7 +171,7 @@ function ProfilePage() {
             <div className={style.github}>
               <h3>Recent Github Repositories:</h3>
               <ul>
-                {Object.entries(repo).length !== 0 &&
+                {repo &&
                   repo.map((repo) => (
                     <a key={repo.id} href={`${user.github}/${repo.name}`} target="_blank">
                       <li>{repo.name}</li>
