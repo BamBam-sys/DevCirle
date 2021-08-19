@@ -38,8 +38,6 @@ function ProfilePage() {
 
       let result = await res.json();
 
-      console.log(result);
-
       let repos = [];
       if (result) {
         for (let i = 0; i < 3; i++) {
