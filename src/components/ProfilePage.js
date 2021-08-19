@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "./Navbar";
 import { liked, unliked } from "../redux/action/likeUnlikeActions";
@@ -34,15 +33,16 @@ function ProfilePage() {
   useEffect(() => {
     userName = user.github.split("/")[3];
     async function gitHubFetch() {
-      let res = await axios.get(
+      let res = await fetch(
         `https://api.github.com/users/${userName}/repos`
       );
+      let result = await res.json();
+      console.log(result, "RESULT");
 
-      console.log(res.data, "AAAAAA");
       var repos = [];
-      if (res.status === 200) {
+      if (result) {
         for (let i = 0; i < 3; i++) {
-          repos.push(res.data[i]);
+          repos.push(result[i]);
         }
       }
       setRepo(repos);
@@ -166,18 +166,17 @@ function ProfilePage() {
             </div>
             <div className={style.github}>
               <h3>Recent Github Repositories:</h3>
-              <ul>
-                {repo &&
-                  repo.map((repo) => (
-                    <a
-                      key={repo.id}
-                      href={`${user.github}/${repo.name}`}
-                      target="_blank"
-                    >
-                      <li>{repo.name}</li>
-                    </a>
-                  ))}
-              </ul>
+              
+              {repo && (
+                <ul>
+                  {repo &&
+                    repo.map((repo) => (
+                      <a key={repo.id} href={`${user.github}/${repo.name}`} target="_blank">
+                        <li>{repo.name}</li>
+                      </a>
+                    ))}
+                </ul>
+              )}
             </div>
           </div>
         </div>

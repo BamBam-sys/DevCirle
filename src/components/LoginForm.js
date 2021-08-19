@@ -30,7 +30,7 @@ const Login = () => {
     // });
     setTimeout(() => {
       history.push("/profilepage");
-    }, 3000);
+    }, 1000);
     
   }
 

@@ -89,7 +89,7 @@ const SignUpComponent = () => {
 
     setTimeout(() => {
       history.push(`/profilepage`);
-    }, 3000);
+    }, 2000);
     
 
     // const errors = validateInfo(signupData);

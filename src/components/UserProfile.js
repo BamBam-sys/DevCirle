@@ -32,27 +32,27 @@ function ProfilePage() {
   useEffect(() => {
     userName = userState.github.split("/")[3];
     async function gitHubFetch() {
-      let res = await axios.get(
+      let res = await fetch(
         `https://api.github.com/users/${userName}/repos`
       );
 
-      console.log(res.data);
+      let result = await res.json();
 
       let repos = [];
-      if (res.status === 200) {
+      if (result) {
         for (let i = 0; i < 3; i++) {
-          repos.push(res.data[i]);
+          repos.push(result[i]);
         }
       }
       setRepo(repos);
     }
     gitHubFetch();
-    console.log(repo);
+    
   }, []);
 
   const token = getToken();
   const loggedInUserId = getUser();
-  console.log(loggedInUserId);
+  
 
   const currentUserLikes = 20; //dummy value
 
@@ -196,7 +196,7 @@ function ProfilePage() {
               <ul>
                 {repo &&
                   repo.map((repo) => (
-                    <a key={repo.id} href={repo.html_url} target="_blank">
+                    <a key={repo.id} href={`${userState.github}/${repo.name}`} target="_blank">
                       <li>{repo.name}</li>
                     </a>
                   ))}
