@@ -20,22 +20,15 @@ import { MdKeyboardBackspace } from "react-icons/md";
 function ProfilePage() {
 
   const { id } = useParams();
-  const history = useHistory();
-  const [userState, setUserState] = useState({});
-  // const storageData = localStorage.getItem("userList");
-  // const userData = JSON.parse(storageData);
-
-  let repos = [];
-  const getUsers = useSelector((state) => state.getUsers)
 
 
-  const token = getToken();
-  const loggedInUserId = getUser()
-  console.log(loggedInUserId);
+  // const [userState, setUserState] = useState({});
+  const storageData = localStorage.getItem("userList");
+  const userData = JSON.parse(storageData);
+  const [userState] = userData.data.filter((user) => user._id === id);
 
 
- const currentUserLikes = 20; //dummy value
- 
+  const [repo, setRepo] = useState([]);
 
   useEffect(() => {
     console.log(getUsers)
@@ -231,7 +224,7 @@ function ProfilePage() {
               {/* <ul>
                 {repo &&
                   repo.map((repo) => (
-                    <a key={repo.id} href={repo.html_url} target="_blank">
+                    <a key={repo.id} href={`${userState.github}/${repo.name}`} target="_blank">
                       <li>{repo.name}</li>
                     </a>
                   ))}

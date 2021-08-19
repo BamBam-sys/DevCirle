@@ -15,13 +15,23 @@ const Login = () => {
   });
 
   function handleChange(e) {
+    e.preventDefault();
+    e.stopPropagation();
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
+    e.stopPropagation();
     dispatch(loginAsync(loginData));
-    history.push(`/profilepage`);
+    // setLoginData({
+    //   email: "",
+    //   password: "",
+    // });
+    setTimeout(() => {
+      history.push("/profilepage");
+    }, 3000);
+    
   }
 
   return (
