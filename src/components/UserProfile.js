@@ -47,12 +47,12 @@ function ProfilePage() {
       setRepo(repos);
     }
     gitHubFetch();
-    console.log(repo);
+    
   }, []);
 
   const token = getToken();
   const loggedInUserId = getUser();
-  console.log(loggedInUserId);
+  
 
   const currentUserLikes = 20; //dummy value
 
