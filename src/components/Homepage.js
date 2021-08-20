@@ -8,6 +8,7 @@ import UserCard from "./UserCard";
 import mockdata from "../MOCK_DATA.json";
 import Footer from "./Footer";
 import "../index.css";
+import homeStyles from "../styles/homepage.module.css";
 import { Link } from "react-router-dom";
 import { getUsersAsync } from "../redux/action/getUserAction";
 
@@ -27,7 +28,7 @@ const Homepage = () => {
     <div>
       <Navbar />
       <Hero />
-      <div className="userList">
+      <div className={homeStyles.userList}>
         <header>Meet some of our users</header>
       </div>
       <div className="user-card">
@@ -39,7 +40,7 @@ const Homepage = () => {
           />
         ))}
       </div>
-      <div className="seeMore">
+      <div className={homeStyles.seeMore}>
         <button onClick={handleClick}>See More</button>
       </div>
 
