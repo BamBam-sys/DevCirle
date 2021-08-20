@@ -179,6 +179,9 @@ function ProfilePage() {
               )}
             </div>
           </div>
+          <div>
+            test
+          </div>
         </div>
       )}
       <Footer />
