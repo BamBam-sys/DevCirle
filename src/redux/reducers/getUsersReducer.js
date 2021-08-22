@@ -5,13 +5,14 @@ import {
 } from "../types/getUsersType";
 
 const initialState = {
-  data: {},
+  data: [], //Changed this to fix issue with redux
   isLoading: false,
   error: {},
 };
 
 export const getUsersReducer = (state = initialState, action) => {
   const { type, payload } = action;
+  console.log("payload", payload);
   switch (type) {
     case GET_USERS_START:
       return {
@@ -22,7 +23,7 @@ export const getUsersReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        data: payload,
+        data: [...payload],  //Changed this to fix issue with redux
       };
     case GET_USERS_FAILURE:
       return {

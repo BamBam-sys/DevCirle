@@ -22,6 +22,7 @@ export const getUsersAsync = () => async (dispatch) => {
   try {
     dispatch(getUsersStart());
     const response = await userFetch.get("/");
+    console.log("response data", typeof response.data.data);
     console.log(response)
     localStorage.setItem("userList", JSON.stringify(response.data));
     dispatch(getUsersSuccess(response.data.data));
