@@ -16,7 +16,10 @@ import { MdKeyboardBackspace } from "react-icons/md";
 
 function SearchPage() {
   const getUsers = useSelector((state) => state.getUsers);
+  console.log("getuser data", getUsers.data);
   const dispatch = useDispatch();
+  
+ 
 
   // const loading = getUsers.isLoading;
   // const storageData = localStorage.getItem("userList");
@@ -95,12 +98,12 @@ function SearchPage() {
         className="backIcon"
         onClick={() => history.goBack()}
       />
-      {isLoading ? (
+      {!data ? (
         <Loading />
       ) : (
         <div className="user-card">
-          {data
-            .filter((val) => {
+          {
+            data.filter((val) => {
               if (search === "") {
                 return val;
               } else if (
